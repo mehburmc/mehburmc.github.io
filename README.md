@@ -21,7 +21,11 @@ Düz HTML, CSS ve JavaScript; kurulum veya build adımı yoktur. GitHub Pages ü
 ## Klasör yapısı
 
 ```
+index.html          ana sayfa
 assets/
+  css/style.css     tüm stiller (renk değişkenleri en üstte)
+  js/main.js        menü ve küçük davranışlar
+  fonts/            gömülü yazı tipleri + lisansları (SIL OFL)
   img/              logo, menü ikonu, sosyal medya önizleme görseli
   img/screenshots/  launcher ekran görüntüleri (tam boy + küçük önizleme)
   icons/            uygulama ve iOS ikonları
@@ -29,6 +33,16 @@ kaynak-gorseller/   görsellerin işlenmemiş orijinalleri
 scripts/            yardımcı araçlar (görsel üretimi)
 favicon.ico         tarayıcı sekmesi ikonu
 ```
+
+## Bilgisayarda açmak
+
+Herhangi bir basit sunucu yeterli, örneğin:
+
+```bash
+python -m http.server 8000
+```
+
+Sonra tarayıcıda `http://localhost:8000` adresini aç.
 
 ## Görselleri yeniden üretmek
 

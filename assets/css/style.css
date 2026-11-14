@@ -1,0 +1,756 @@
+/* ==========================================================================
+   MehburMC Launcher sitesi: ana stil dosyası
+   Bölümler: 1) Fontlar  2) Tasarım değişkenleri  3) Temel  4) Arka plan
+             5) Yerleşim  6) Bileşenler  7) Menü  8) Giriş  9) Alt bilgi
+             10) Hareket azaltma
+   ========================================================================== */
+
+/* 1) Fontlar ---------------------------------------------------------------
+   Dosyalar siteyle birlikte gelir (Google'a istek atılmaz).
+   unicode-range: tarayıcı yalnızca sayfada geçen karakterlerin dosyasını indirir;
+   Türkçe harfler (ğ, ş, İ) "latin-ext" dosyasındadır. */
+
+/* Orbitron yalnızca latin içerir → sadece marka yazısında (MehburMC) kullanılır */
+@font-face {
+  font-family: "Orbitron";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/orbitron-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Orbitron";
+  font-weight: 900;
+  font-display: swap;
+  src: url("../fonts/orbitron-latin-900-normal.woff2") format("woff2");
+}
+
+/* Rajdhani: başlıklar ve butonlar */
+@font-face {
+  font-family: "Rajdhani";
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/rajdhani-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/rajdhani-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/rajdhani-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/rajdhani-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/rajdhani-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/rajdhani-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Inter (değişken kalınlıklı): gövde metni */
+@font-face {
+  font-family: "Inter Variable";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Variable";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* 2) Tasarım değişkenleri ----------------------------------------------------
+   Renkler launcher'ın kendi temasıyla (src/styles/tokens.css) birebir aynıdır. */
+:root {
+  color-scheme: dark;
+
+  --bg: #05070a;
+  --surface-1: #0b1117;
+  --surface-2: #101a22;
+  --surface-3: #162430;
+  --border: #1c2b37;
+  --text: #e6f1f5;
+  --text-muted: #8fa3ae;
+
+  --accent: #00f0ff; /* neon cyan */
+  --accent-2: #00b8d4; /* koyu cyan */
+  --accent-glow: #7df9ff; /* açık parlama tonu */
+  --accent-rgb: 0 240 255; /* parlama gölgeleri için RGB hali */
+  --on-accent: #021a1d; /* cyan zemin üstündeki yazı rengi */
+
+  --success: #00ffa3;
+  --warn: #ffb800;
+  --danger: #ff3b5c;
+
+  --font-body: "Inter Variable", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Rajdhani", "Inter Variable", "Segoe UI", sans-serif;
+  --font-brand: "Orbitron", "Rajdhani", sans-serif;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+
+  --container: 1160px;
+  --gutter: 16px;
+  --nav-h: 68px;
+  --section-space: clamp(4rem, 9vw, 7rem);
+
+  /* Neon parlama gölgeleri */
+  --glow-sm: 0 0 0 1px rgb(var(--accent-rgb) / 0.55), 0 0 16px rgb(var(--accent-rgb) / 0.22);
+  --glow-md: 0 0 0 1px rgb(var(--accent-rgb) / 0.8), 0 0 24px rgb(var(--accent-rgb) / 0.45);
+  --glow-lg: 0 0 0 1px rgb(var(--accent-rgb) / 1), 0 0 38px rgb(var(--accent-rgb) / 0.65);
+}
+
+/* 3) Temel ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-h) + 12px); /* menünün altına saklanmasın */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  isolation: isolate; /* arka plan katmanları içerikle karışmasın */
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  letter-spacing: 0.01em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: rgb(var(--accent-rgb) / 0.35);
+  color: #fff;
+}
+
+/* Kaydırma çubuğu (Chromium tabanlı tarayıcılar) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border);
+}
+
+/* Ekran okuyucular için görünmez ama okunabilir metin */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Klavye kullanıcıları için "içeriğe geç" bağlantısı */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--gutter);
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  border-radius: var(--radius);
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* 4) Arka plan --------------------------------------------------------------
+   Logodaki soluk altıgen deseni + üstte hafif cyan ışık. Sabit durur, sayfa kayar. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cg fill='none' stroke='%237df9ff' stroke-opacity='0.07' stroke-width='0.6'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 168px 300px;
+  background-position: center top;
+  /* Desen kenarlara doğru kaybolur, ortada belirgin kalır */
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 85%);
+}
+
+body::after {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% -5%, rgb(var(--accent-rgb) / 0.16), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 100% 100%, rgb(var(--accent-rgb) / 0.05), transparent 70%);
+}
+
+/* 5) Yerleşim --------------------------------------------------------------- */
+.container {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+main {
+  flex: 1;
+}
+
+.section {
+  padding-block: var(--section-space);
+}
+
+/* Bölüm başlığı: büyük harf + altında parlayan çizgi */
+.section-title {
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4em;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 0.35em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 12px rgb(var(--accent-rgb) / 0.7);
+}
+.section-title.is-centered::after {
+  margin-inline: auto;
+}
+
+.section-lead {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 62ch;
+}
+
+.is-centered {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* 6) Bileşenler -------------------------------------------------------------- */
+
+/* Butonlar */
+.btn {
+  --btn-pad-y: 0.7rem;
+  --btn-pad-x: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  min-height: 44px; /* parmakla dokunmaya uygun yükseklik */
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: var(--glow-md);
+}
+.btn-primary:hover {
+  background: var(--accent-glow);
+  box-shadow: var(--glow-lg);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgb(var(--accent-rgb) / 0.04);
+  color: var(--accent);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+}
+.btn-ghost:hover {
+  background: rgb(var(--accent-rgb) / 0.1);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-1px);
+}
+
+.btn-lg {
+  --btn-pad-y: 1rem;
+  --btn-pad-x: 2rem;
+  font-size: 1.25rem;
+}
+
+/* Kart: yarı saydam yüzey, üstüne gelince neon çerçeve */
+.card {
+  background: rgb(11 17 23 / 0.78);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.card:hover {
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
+}
+
+/* Küçük etiket (ör. "Yapım aşamasında", sürüm numarası) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.08);
+  border: 1px solid rgb(var(--accent-rgb) / 0.35);
+  border-radius: 999px;
+}
+
+.neon-text {
+  color: var(--accent);
+  text-shadow: 0 0 12px rgb(var(--accent-rgb) / 0.55);
+}
+
+/* Bölüm yer tutucusu (sonraki fazlarda gerçek içerikle değişecek) */
+.placeholder {
+  margin-top: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: rgb(11 17 23 / 0.5);
+}
+
+/* 7) Menü (navbar) ------------------------------------------------------------ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--nav-h);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    backdrop-filter 0.25s ease;
+}
+/* Sayfa kaydırılınca menünün arkası koyulaşır ve bulanıklaşır */
+.site-header.is-scrolled,
+.site-header.is-open {
+  background: rgb(5 7 10 / 0.82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.brand img {
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 0 6px rgb(var(--accent-rgb) / 0.45));
+}
+.brand-name {
+  font-family: var(--font-brand);
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+.brand-name span {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgb(var(--accent-rgb) / 0.6);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.35rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+/* Üstüne gelince altta parlayan çizgi */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgb(var(--accent-rgb) / 0.8);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+.nav-links a:hover {
+  color: var(--text);
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hamburger butonu: yalnızca dar ekranlarda görünür */
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+/* Açıkken üç çizgi "X" şekline döner */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* JavaScript çalışmıyorsa menü açık kalır; çalışıyorsa açılır panel olur */
+  .js .nav-menu {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem var(--gutter) 1.5rem;
+    background: rgb(5 7 10 / 0.985);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0s linear 0.2s;
+  }
+  .js .site-header.is-open .nav-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-links a {
+    display: block;
+    padding: 0.85rem 0.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-menu .btn {
+    width: 100%;
+  }
+
+  html:not(.js) .site-header {
+    position: static;
+    height: auto;
+  }
+  html:not(.js) .nav {
+    flex-wrap: wrap;
+    padding-block: 0.75rem;
+  }
+  html:not(.js) .nav-toggle {
+    display: none;
+  }
+}
+
+/* 8) Giriş bölümü (hero) --------------------------------------------------------
+   Faz 1'de geçici; asıl içerik Faz 2'de eklenecek. */
+.hero {
+  padding-top: calc(var(--nav-h) + clamp(2rem, 6vw, 4rem));
+  padding-bottom: var(--section-space);
+  text-align: center;
+}
+.hero-logo {
+  width: min(640px, 100%);
+  margin: 0 auto 1.5rem;
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 34ch;
+  margin-inline: auto;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Telefonda butonlar alt alta ve tam genişlikte */
+@media (max-width: 520px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-lg {
+    --btn-pad-x: 1rem;
+    font-size: 1.05rem;
+  }
+}
+
+/* 9) Alt bilgi (footer) -------------------------------------------------------- */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  background: rgb(5 7 10 / 0.85);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  padding-block: 3rem 2rem;
+}
+
+.footer-brand .brand {
+  margin-bottom: 0.75rem;
+}
+.footer-brand p {
+  max-width: 40ch;
+  margin: 0;
+}
+
+.footer-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  margin-bottom: 0.9rem;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer-links a {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  padding-block: 1.25rem 1.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.footer-bottom p {
+  margin: 0 0 0.35rem;
+}
+.footer-legal {
+  opacity: 0.75;
+}
+
+@media (max-width: 700px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 10) Hareket azaltma ------------------------------------------------------------
+   İşletim sisteminde "animasyonları azalt" açıksa geçişler ve kaydırma sakinleşir. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
