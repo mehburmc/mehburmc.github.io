@@ -21,10 +21,16 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Görseller `scripts/build-assets.py` ile yeniden üretilebilir
 - İlk yükleme: `mehburmc/mehburmc.github.io` reposu (doğrudan `main`)
 
-## Faz 1: Tasarım iskeleti (`feature/design-system`)
-- Renk ve boşluk değişkenleri, altıgen desenli arka plan, neon parlama efektleri
-- Yazı tipleri (siteye gömülü, Google'a istek atmadan)
-- Menü (navbar), alt bilgi (footer), telefona uyumlu yerleşim
+## Faz 1: Tasarım iskeleti (`feature/design-system`) ✅
+- Renk değişkenleri launcher'ın kendi temasıyla birebir aynı (`#00f0ff` neon cyan, `#05070a` zemin)
+- Altıgen desenli sabit arka plan + üstte hafif cyan ışık, neon parlama efektleri
+- Yazı tipleri siteye gömülü: Orbitron (marka yazısı), Rajdhani (başlık/buton), Inter (metin)
+- Bileşenler: buton (dolu / çerçeveli / büyük), kart, etiket (chip), bölüm başlığı
+- Menü: kaydırınca koyulaşır; 880 px altında hamburger menü (Esc ile kapanır)
+- Alt bilgi: bağlantılar, lisans, "Mojang/Microsoft ile bağlantılı değildir" notu
+- Logo arka planı şeffaflaştırıldı (sayfada dikdörtgen izi kalmıyor)
+- Geçici giriş bölümü ve bölüm yer tutucuları (Faz 2'de dolacak)
+- Test: 1440 px masaüstü, 390 px ve 320 px telefon genişliğinde yatay taşma yok
 
 ## Faz 2: İçerik bölümleri (`feature/sections`)
 - Giriş (hero): logo, slogan, büyük **İndir** butonu
