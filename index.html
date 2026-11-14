@@ -86,7 +86,7 @@
             <li><a href="#faq">SSS</a></li>
             <li><a href="#source">Kaynak Kod</a></li>
           </ul>
-          <!-- Faz 3'te bu buton .exe / .deb seçim penceresini açacak -->
+          <!-- data-download: .exe / .deb seçim penceresini açar (JavaScript yoksa GitHub'a gider) -->
           <a class="btn btn-primary" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>
             <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
             İndir
@@ -257,6 +257,78 @@
         </button>
       </dialog>
 
+      <!-- İndirme penceresi: İndir butonları bunu açar (JavaScript yoksa butonlar GitHub'a gider) -->
+      <dialog class="modal" id="download-dialog" aria-labelledby="dl-title">
+        <div class="modal-head">
+          <div>
+            <h2 class="modal-title" id="dl-title">MehburMC Launcher'ı İndir</h2>
+            <p class="modal-sub" data-dl-status aria-live="polite">Sürüm bilgisi alınıyor…</p>
+          </div>
+          <button class="lightbox-btn modal-close" type="button" aria-label="Kapat">
+            <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </div>
+
+        <!-- Telefon / macOS ziyaretçileri için bilgi notu (JavaScript doldurur) -->
+        <p class="notice notice-info" data-dl-platform-note hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-warn" /></svg>
+          <span></span>
+        </p>
+
+        <div class="dl-options">
+          <article class="dl-option" data-os="windows">
+            <span class="dl-badge" hidden>Senin sistemin</span>
+            <div class="req-head">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-windows" /></svg></span>
+              <div>
+                <h3 lang="en">Windows</h3>
+                <p class="dl-meta">Windows 10 / 11 · 64 bit</p>
+              </div>
+            </div>
+            <p class="dl-file">
+              <code data-dl-name>…_x64-setup.exe</code>
+              <span data-dl-size></span>
+            </p>
+            <a class="btn btn-ghost dl-btn" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-dl-link>
+              <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
+              <span><span lang="en">Windows</span> için İndir <span lang="en">(.exe)</span></span>
+            </a>
+          </article>
+
+          <article class="dl-option" data-os="linux">
+            <span class="dl-badge" hidden>Senin sistemin</span>
+            <div class="req-head">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal" /></svg></span>
+              <div>
+                <h3 lang="en">Linux</h3>
+                <p class="dl-meta">Ubuntu 26.04 / MehburOS · <code>.deb</code></p>
+              </div>
+            </div>
+            <p class="dl-file">
+              <code data-dl-name>…_amd64.deb</code>
+              <span data-dl-size></span>
+            </p>
+            <a class="btn btn-ghost dl-btn" href="https://github.com/Mehbur07/MehburMC-Launcher/releases" data-dl-link>
+              <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
+              <span><span lang="en">Linux</span> için İndir <span lang="en">(.deb)</span></span>
+            </a>
+            <div class="dl-cmd">
+              <p>Kurulum: dosyanın olduğu klasörde terminal açıp şunu çalıştır:</p>
+              <div class="cmd-box">
+                <code data-dl-cmd>sudo apt install ./MehburMC-Launcher_&lt;sürüm&gt;_amd64.deb</code>
+                <button class="copy-btn" type="button" data-copy>Kopyala</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="modal-foot">
+          <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/releases" rel="noopener">Tüm sürümler ve sürüm notları</a>
+          <span aria-hidden="true">·</span>
+          <a class="text-link" href="#faq">Windows uyarı verirse ne yapmalıyım?</a>
+        </p>
+      </dialog>
+
       <!-- ===== Hakkında + Sistem gereksinimleri ===== -->
       <section class="section" id="about" aria-labelledby="about-title">
         <div class="container">
@@ -412,7 +484,7 @@
                 <svg class="icon" aria-hidden="true"><use href="#i-warn" /></svg>
                 <span>
                   Kaynak kod yalnızca geliştiriciler içindir, oynamak için gerekmez. Launcher'ı kullanmak için
-                  <a class="text-link" href="#home">İndir</a> butonunu kullan.
+                  <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>İndir</a> butonunu kullan.
                 </span>
               </p>
             </div>

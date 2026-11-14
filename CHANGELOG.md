@@ -13,3 +13,5 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
   gömülü yazı tipleri, butonlar, menü (telefonda açılır menü) ve alt bilgi.
 - Sitenin içerik bölümleri eklendi: özellikler, büyüyen fotoğraf galerisi, hakkında,
   sistem gereksinimleri, sık sorulan sorular ve kaynak kod indirme bölümü.
+- İndir butonu artık Windows (.exe) ve Linux (.deb) arasında seçim sunan bir pencere açıyor;
+  sürüm ve dosya boyutu GitHub'dan canlı geliyor, ziyaretçinin sistemi otomatik öne çıkıyor.

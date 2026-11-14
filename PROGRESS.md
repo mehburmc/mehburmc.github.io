@@ -1,5 +1,25 @@
 # İlerleme Kaydı
 
+### [2026-11-15 - Mehbur07]
+- **Yapılanlar & Kararlar:**
+  - Faz 3 (indirme sistemi) `feature/downloads` branch'i ve PR ile `main`'e alındı
+  - İndir butonları `.exe` / `.deb` seçim penceresi açıyor; sürüm, dosya adı ve boyut GitHub
+    API'den canlı geliyor, sonuç 10 dakika tarayıcı hafızasında tutuluyor
+  - Ziyaretçinin sistemi algılanıyor (Windows / Linux öne çıkar; telefon ve macOS'a bilgi notu)
+  - API'ye ulaşılamazsa veya JavaScript yoksa butonlar GitHub'daki sürümler sayfasına gidiyor
+  - Pencere kapanış temizliği "close" olayına bağlı bırakılmadı (headless testte olay gelmedi);
+    lightbox da aynı şekilde düzeltildi
+- **Son Commit:** 324db2f Merge pull request #2 from mehburmc/feature/sections
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Faz 4: TR/EN dil desteği (main.js içindeki `TEXT`
+  yazıları da çevrilmeli)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - GitHub API saatlik 60 istek sınırı (ziyaretçi IP'si başına); önbellek bunu hafifletiyor
+  - `.deb` dosyaları `-linux` ile biten ön sürümlerde (prerelease); bu düzen değişirse
+    `PATTERNS` güncellenmeli
+  - m07-site'daki "MehburMC Launcher-Site" kartı `feature/mmc-site-card` branch'inde
+    (geçici worktree) yüklenmeyi bekliyor
+
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
   - Repo public yapıldı; GitHub Pages açıldı (https://mehburmc.github.io) ve `main` koruma

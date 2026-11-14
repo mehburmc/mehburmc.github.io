@@ -76,13 +76,25 @@
       });
     });
 
-    lightbox.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
+    // Kapanış temizliği: kaydırma kilidi kalkar, odak küçük resme döner.
+    // Hem doğrudan hem "close" olayından çağrılır; iki kez çalışması zararsızdır.
+    function afterClose() {
+      document.documentElement.classList.remove("no-scroll");
+      if (opener) opener.focus({ preventScroll: true });
+      opener = null;
+    }
+    function closeLightbox() {
+      if (lightbox.open) lightbox.close();
+      afterClose();
+    }
+
+    lightbox.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
     lightbox.querySelector(".lightbox-prev").addEventListener("click", () => show(current - 1));
     lightbox.querySelector(".lightbox-next").addEventListener("click", () => show(current + 1));
 
     // Resmin dışındaki karanlık alana tıklayınca kapanır
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) lightbox.close();
+      if (event.target === lightbox) closeLightbox();
     });
 
     // Ok tuşlarıyla gezinme (Esc'yi tarayıcı kendisi yönetir)
@@ -91,9 +103,218 @@
       if (event.key === "ArrowRight") show(current + 1);
     });
 
-    lightbox.addEventListener("close", () => {
+    // Esc ile kapanınca tarayıcı bu olayı gönderir
+    lightbox.addEventListener("close", afterClose);
+  }
+
+  // --- İndirme penceresi (.exe / .deb seçimi) ----------------------------------
+  // Sürüm bilgisi GitHub API'den canlı çekilir. API'ye ulaşılamazsa butonlar GitHub'daki
+  // sürümler sayfasına gider. JavaScript yoksa İndir butonları zaten oraya gider.
+  const dlDialog = document.getElementById("download-dialog");
+  const dlTriggers = document.querySelectorAll("[data-download]");
+
+  if (dlDialog && typeof dlDialog.showModal === "function" && dlTriggers.length) {
+    const REPO = "Mehbur07/MehburMC-Launcher";
+    const API_URL = `https://api.github.com/repos/${REPO}/releases?per_page=20`;
+    const CACHE_KEY = "mmc-releases-v1";
+    const CACHE_MS = 10 * 60 * 1000; // 10 dakika: GitHub'ın saatlik 60 istek sınırını korur
+
+    // Ekranda görünen yazılar (Faz 4'te İngilizce karşılıkları eklenecek)
+    const TEXT = {
+      loading: "Sürüm bilgisi alınıyor…",
+      latest: (version, date) => `Son sürüm: v${version} · ${date}`,
+      error: "Sürüm bilgisi şu an alınamadı. Butonlar seni GitHub'daki sürümler sayfasına götürecek.",
+      mobile: "MehburMC Launcher bir bilgisayar uygulamasıdır; telefon ve tablette çalışmaz. Bu sayfayı bilgisayarından açıp indirebilirsin.",
+      mac: "macOS şu an desteklenmiyor. Launcher yalnızca Windows ve Linux'ta çalışır.",
+      copy: "Kopyala",
+      copied: "Kopyalandı!",
+    };
+    const PATTERNS = { windows: /_x64-setup\.exe$/i, linux: /_amd64\.deb$/i };
+
+    const statusEl = dlDialog.querySelector("[data-dl-status]");
+    const noteEl = dlDialog.querySelector("[data-dl-platform-note]");
+    const cmdEl = dlDialog.querySelector("[data-dl-cmd]");
+    const copyBtn = dlDialog.querySelector("[data-copy]");
+    const options = {
+      windows: dlDialog.querySelector('[data-os="windows"]'),
+      linux: dlDialog.querySelector('[data-os="linux"]'),
+    };
+    let loadPromise = null;
+    let opener = null;
+
+    // Ziyaretçinin sistemi: telefon kontrolü önce (Android'in tanıtım yazısında da "Linux" geçer)
+    function detectPlatform() {
+      const ua = navigator.userAgent || "";
+      const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+      if (/Android|iPhone|iPad|iPod/i.test(ua) || (/Mac/i.test(platform) && navigator.maxTouchPoints > 1)) return "mobile";
+      if (/Win/i.test(platform) || /Windows/i.test(ua)) return "windows";
+      if (/Mac/i.test(platform) || /Mac OS X/i.test(ua)) return "mac";
+      if (/Linux|X11|CrOS/i.test(platform + " " + ua)) return "linux";
+      return "unknown";
+    }
+
+    function applyPlatform() {
+      const platform = detectPlatform();
+      Object.entries(options).forEach(([os, card]) => {
+        const match = os === platform;
+        card.classList.toggle("is-recommended", match);
+        card.querySelector(".dl-badge").hidden = !match;
+        const btn = card.querySelector("[data-dl-link]");
+        btn.classList.toggle("btn-primary", match);
+        btn.classList.toggle("btn-ghost", !match);
+      });
+      const note = platform === "mobile" ? TEXT.mobile : platform === "mac" ? TEXT.mac : "";
+      noteEl.hidden = !note;
+      noteEl.querySelector("span").textContent = note;
+    }
+
+    // Tarayıcı hafızası gizli modda çalışmayabilir; hata vermesin
+    function readCache() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+        if (saved && Date.now() - saved.time < CACHE_MS) return saved.data;
+      } catch (e) {
+        /* hafıza kullanılamıyor: sorun değil, API'ye sorulur */
+      }
+      return null;
+    }
+    function writeCache(data) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), data }));
+      } catch (e) {
+        /* hafıza kullanılamıyor: sorun değil */
+      }
+    }
+
+    // Sürüm listesinden her sistem için en yeni dosyayı bulur
+    function pickAssets(releases) {
+      const sorted = releases
+        .filter((r) => !r.draft)
+        .sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+      const result = {};
+      Object.entries(PATTERNS).forEach(([os, pattern]) => {
+        for (const release of sorted) {
+          const asset = (release.assets || []).find((a) => pattern.test(a.name));
+          if (asset) {
+            const version = (asset.name.match(/_(\d+\.\d+\.\d+)_/) || [])[1] || release.tag_name;
+            result[os] = {
+              name: asset.name,
+              size: asset.size,
+              url: asset.browser_download_url,
+              version,
+              date: release.published_at,
+            };
+            break;
+          }
+        }
+      });
+      return result;
+    }
+
+    async function loadReleases() {
+      const cached = readCache();
+      if (cached) return cached;
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      try {
+        const res = await fetch(API_URL, {
+          headers: { Accept: "application/vnd.github+json" },
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+        const data = pickAssets(await res.json());
+        if (!data.windows && !data.linux) throw new Error("Uygun dosya bulunamadı");
+        writeCache(data);
+        return data;
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    function formatSize(bytes) {
+      return `${(bytes / 1048576).toLocaleString("tr-TR", { maximumFractionDigits: 1 })} MB`;
+    }
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+    }
+
+    function render(data) {
+      Object.entries(options).forEach(([os, card]) => {
+        const asset = data[os];
+        if (!asset) return; // bulunamayan sistemin butonu GitHub sayfasına gitmeye devam eder
+        card.querySelector("[data-dl-name]").textContent = asset.name;
+        card.querySelector("[data-dl-size]").textContent = `v${asset.version} · ${formatSize(asset.size)}`;
+        card.querySelector("[data-dl-link]").href = asset.url;
+      });
+      if (data.linux) cmdEl.textContent = `sudo apt install ./${data.linux.name}`;
+      const main = data.windows || data.linux;
+      statusEl.textContent = TEXT.latest(main.version, formatDate(main.date));
+    }
+
+    function openDialog(trigger) {
+      opener = trigger;
+      applyPlatform();
+      dlDialog.showModal();
+      document.documentElement.classList.add("no-scroll");
+      if (!loadPromise) {
+        statusEl.textContent = TEXT.loading;
+        loadPromise = loadReleases()
+          .then(render)
+          .catch(() => {
+            statusEl.textContent = TEXT.error;
+            loadPromise = null; // bir dahaki açılışta yeniden denenir
+          });
+      }
+    }
+
+    dlTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openDialog(trigger);
+      });
+    });
+
+    // Kapanış temizliği: kaydırma kilidi kalkar, odak pencereyi açan butona döner
+    // (klavye kullanıcıları için). Hem doğrudan hem "close" olayından çağrılır.
+    function afterClose(restoreFocus = true) {
       document.documentElement.classList.remove("no-scroll");
-      opener?.focus();
+      if (opener && restoreFocus) opener.focus({ preventScroll: true });
+      opener = null;
+    }
+    function closeDialog(restoreFocus = true) {
+      if (dlDialog.open) dlDialog.close();
+      afterClose(restoreFocus);
+    }
+
+    dlDialog.querySelector(".modal-close").addEventListener("click", () => closeDialog());
+    dlDialog.addEventListener("click", (event) => {
+      if (event.target === dlDialog) closeDialog(); // karanlık alana tıklama
+      // Sayfa içi bağlantı (ör. SSS) seçilirse pencere kapanır ve sayfa oraya kayar;
+      // odak geri verilmez ki ziyaretçi kaldığı yerden devam etsin
+      if (event.target.closest('a[href^="#"]')) closeDialog(false);
+    });
+    // Esc ile kapanınca tarayıcı bu olayı gönderir
+    dlDialog.addEventListener("close", () => afterClose());
+
+    // Linux kurulum komutunu kopyala. Komut önce seçili hale gelir (pano izni gelmezse
+    // ziyaretçi Ctrl+C ile kopyalayabilir), sonra panoya yazılması denenir.
+    copyBtn.addEventListener("click", async () => {
+      const range = document.createRange();
+      range.selectNodeContents(cmdEl);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      try {
+        await navigator.clipboard.writeText(cmdEl.textContent);
+      } catch (e) {
+        return; // pano kullanılamıyor: komut seçili kalır
+      }
+      copyBtn.textContent = TEXT.copied;
+      copyBtn.classList.add("is-done");
+      setTimeout(() => {
+        copyBtn.textContent = TEXT.copy;
+        copyBtn.classList.remove("is-done");
+      }, 2000);
     });
   }
 

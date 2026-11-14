@@ -936,6 +936,192 @@ code {
   }
 }
 
+/* İndirme penceresi (modal) */
+.modal {
+  width: min(860px, 100vw - 2 * var(--gutter));
+  max-width: none;
+  max-height: calc(100vh - 2 * var(--gutter));
+  padding: clamp(1.25rem, 3vw, 2rem);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(var(--accent-rgb) / 0.1), transparent 70%),
+    var(--surface-1);
+  border: 1px solid rgb(var(--accent-rgb) / 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 60px rgb(var(--accent-rgb) / 0.15),
+    0 30px 80px rgb(0 0 0 / 0.7);
+  overflow-y: auto;
+}
+.modal::backdrop {
+  background: rgb(2 4 6 / 0.85);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.modal-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2em;
+}
+.modal-sub {
+  margin: 0;
+  color: var(--text-muted);
+}
+.modal-close {
+  position: static;
+  flex-shrink: 0;
+}
+.modal-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.dl-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.dl-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: rgb(5 7 10 / 0.55);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+/* Ziyaretçinin sistemine uyan seçenek öne çıkar */
+.dl-option.is-recommended {
+  order: -1;
+  border-color: rgb(var(--accent-rgb) / 0.6);
+  box-shadow: var(--glow-sm);
+}
+.dl-option h3 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+.dl-option .req-head {
+  margin-bottom: 0.75rem;
+}
+.dl-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.dl-badge {
+  position: absolute;
+  top: -0.7rem;
+  right: 1rem;
+  padding: 0.15rem 0.65rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgb(var(--accent-rgb) / 0.6);
+}
+.dl-file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.dl-file code {
+  word-break: break-all;
+}
+.dl-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Linux kurulum komutu */
+.dl-cmd {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.dl-cmd p {
+  margin-bottom: 0.5rem;
+}
+.cmd-box {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.cmd-box code {
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0.25rem;
+  background: none;
+  border: 0;
+  color: var(--accent-glow);
+  word-break: break-all;
+}
+.copy-btn {
+  flex-shrink: 0;
+  padding: 0.35rem 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.08);
+  border: 1px solid rgb(var(--accent-rgb) / 0.4);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.copy-btn:hover {
+  background: rgb(var(--accent-rgb) / 0.16);
+}
+.copy-btn.is-done {
+  color: var(--success);
+  border-color: rgb(0 255 163 / 0.5);
+}
+
+/* Bilgi notu (uyarının cyan tonu). ".notice" kuralı dosyada daha aşağıda olduğu için
+   iki sınıflı seçici kullanılır, yoksa sarı uyarı rengi bunu ezer. */
+.notice.notice-info {
+  margin-bottom: 1.25rem;
+  background: rgb(var(--accent-rgb) / 0.06);
+  border-color: rgb(var(--accent-rgb) / 0.35);
+}
+.notice.notice-info .icon {
+  color: var(--accent);
+}
+.notice[hidden] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .dl-options {
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* "Senin sistemin" etiketi üstteki karta değmesin */
+  }
+}
+
 /* Hakkında */
 .about-grid {
   display: grid;

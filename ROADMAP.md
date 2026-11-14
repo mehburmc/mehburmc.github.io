@@ -45,13 +45,17 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Sayfa sonu çağrısı ("Oyuna hazır mısın?")
 - Bilgiler launcher'ın kendi belgelerinden (README, KULLANIM, GIZLILIK) alındı
 
-## Faz 3: İndirme sistemi (`feature/downloads`)
-- İndir → açılır pencere (modal): Windows `.exe` / Linux `.deb`, sürüm ve dosya boyutu
-- Ziyaretçinin işletim sistemine uygun seçenek öne çıkar
-- Linux kurulum komutu + "kopyala" butonu
+## Faz 3: İndirme sistemi (`feature/downloads`) ✅
+- Tüm İndir butonları açılır pencere (modal) açar: Windows `.exe` / Linux `.deb`; dosya adı,
+  sürüm ve boyut
+- Ziyaretçinin sistemine uyan seçenek "Senin sistemin" etiketiyle öne çıkar; telefon ve macOS
+  ziyaretçilerine bilgi notu gösterilir
+- Linux kurulum komutu + "Kopyala" butonu (pano izni yoksa komut seçili kalır)
 - Veriler GitHub API'den canlı çekilir. `.exe` normal sürümde, `.deb` ise `-linux` ile biten
   ön sürümde (prerelease) durduğu için ikisi ayrı ayrı aranır
-- API'ye ulaşılamazsa (ör. saatlik 60 istek sınırı) Releases sayfasına yönlendirme
+- Sonuç 10 dakika tarayıcı hafızasında tutulur (saatlik 60 istek sınırını korur)
+- API'ye ulaşılamazsa butonlar GitHub'daki sürümler sayfasına gider; JavaScript yoksa da öyle
+- Test: Windows / Linux / Android senaryoları, API erişilemez durumu, Kopyala ve SSS bağlantısı
 
 ## Faz 4: TR/EN dil desteği (`feature/i18n`)
 - Tüm metinler iki dilde, dil düğmesi
