@@ -4,6 +4,8 @@
 Launcher; Windows ve Linux için hafif, reklamsız ve telemetrisiz bir Minecraft Java Edition
 launcher'ıdır.
 
+**Canlı site:** https://mehburmc.github.io
+
 > **Durum:** yapım aşamasında. Fazlar ve ilerleme için [ROADMAP.md](ROADMAP.md) dosyasına bak.
 
 ## Sitede neler olacak

@@ -2,6 +2,25 @@
 
 ### [2026-11-14 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Repo public yapıldı; GitHub Pages açıldı (https://mehburmc.github.io) ve `main` koruma
+    kuralı (ruleset) eklendi
+  - Faz 2 (içerik bölümleri) `feature/sections` branch'i ve PR ile `main`'e alındı: giriş,
+    9 özellik kartı, lightbox'lı galeri, hakkında + gereksinimler, SSS, kaynak kod, son çağrı
+  - İçerik launcher'ın kendi belgelerinden alındı; doğrulanamayan iddialar yazılmadı
+    ("Veri toplamaz" yerine "Telemetri yok")
+  - Türkçe büyük harf sorunu İngilizce kelimelerde `lang="en"` ile çözülüyor (SKIN, .ZIP)
+- **Son Commit:** c1632da Merge pull request #1 from mehburmc/feature/design-system
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Faz 3: İndir butonu → `.exe` / `.deb` seçim penceresi
+  (GitHub API'den canlı sürüm bilgisi)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - İndir butonları şimdilik GitHub'daki son sürüm sayfasına gidiyor (Faz 3'te değişecek)
+  - `.deb` dosyaları `-linux` ile biten ön sürümlerde (prerelease); "latest" API'si onları göstermez
+  - m07-site'daki "MehburMC Launcher-Site" kartı `feature/mmc-site-card` branch'inde
+    (geçici worktree) yüklenmeyi bekliyor
+
+### [2026-11-14 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - İlk yükleme: `mehburmc/mehburmc.github.io` reposu (private) oluşturuldu, Faz 0 doğrudan
     `main`'e gönderildi; About açıklaması, topic'ler ve Dependabot uyarıları eklendi
   - Faz 1 (tasarım iskeleti) `feature/design-system` branch'i ve PR ile `main`'e alındı:

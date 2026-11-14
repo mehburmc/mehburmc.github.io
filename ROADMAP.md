@@ -32,12 +32,18 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Geçici giriş bölümü ve bölüm yer tutucuları (Faz 2'de dolacak)
 - Test: 1440 px masaüstü, 390 px ve 320 px telefon genişliğinde yatay taşma yok
 
-## Faz 2: İçerik bölümleri (`feature/sections`)
-- Giriş (hero): logo, slogan, büyük **İndir** butonu
-- Özellikler kartları: reklamsız, telemetrisiz, Modrinth, Mod Toggle, Skin editörü, Arkadaşlar
-- Fotoğraflar: galeri + tıklayınca büyütme (lightbox)
-- Hakkında, Sistem gereksinimleri, SSS (Windows SmartScreen uyarısı dahil)
-- Kaynak kod: "GitHub'da Gör", "Kaynak Kodu İndir (.zip)" (`main` branch'i), GPL-3.0 notu
+## Faz 2: İçerik bölümleri (`feature/sections`) ✅
+- Giriş: logo, slogan, **İndir** + GitHub butonları, güven maddeleri, çerçeveli ekran görüntüsü
+- Özellikler: 9 kart (Profiller, Otomatik Java, Mod Tarayıcı, Mod Toggle, Skin & Cape,
+  Arkadaşlar, MehburMC Kütüphanesi, Sunucular, Ve Dahası), özgün çizim ikonlar
+- Fotoğraflar: 2×2 galeri + lightbox (ok tuşları, Esc, dışarı tıklayınca kapanır;
+  JavaScript yoksa resim doğrudan açılır)
+- Hakkında + teknik bilgiler kartı + Windows/Linux sistem gereksinimleri
+- SSS: 6 soru (ücretsiz mi, SmartScreen uyarısı, Java, hesap, güncelleme, sorun bildirme)
+- Kaynak kod: "GitHub'da Gör", "Kaynak Kodu İndir (.zip)" (`main`), GPL-3.0 ve
+  "oynamak için gerekmez" uyarısı
+- Sayfa sonu çağrısı ("Oyuna hazır mısın?")
+- Bilgiler launcher'ın kendi belgelerinden (README, KULLANIM, GIZLILIK) alındı
 
 ## Faz 3: İndirme sistemi (`feature/downloads`)
 - İndir → açılır pencere (modal): Windows `.exe` / Linux `.deb`, sürüm ve dosya boyutu
