@@ -1,11 +1,20 @@
-// MehburMC Launcher sitesi: genel davranışlar (menü, kaydırma, yıl)
+// MehburMC Launcher sitesi: genel davranışlar (menü, galeri, indirme penceresi, yıl)
 (() => {
   "use strict";
+
+  // Dil sistemi (i18n.js) bu dosyadan önce yüklenir. Yüklenemezse Türkçe yazılar
+  // HTML'de durduğu için sayfa yine çalışır; JavaScript'in yazdığı metinler için
+  // anahtarın kendisi yerine boş olmayan bir yedek döner.
+  const i18n = window.MMC_I18N || {
+    t: (key) => key,
+    locale: () => "tr-TR",
+  };
+  const t = (key, vars) => i18n.t(key, vars);
 
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
   const menu = document.getElementById("nav-menu");
-  const desktopQuery = window.matchMedia("(min-width: 881px)");
+  const desktopQuery = window.matchMedia("(min-width: 1041px)");
 
   // --- Mobil menü ---------------------------------------------------------
   function setMenu(open) {
@@ -37,6 +46,9 @@
     desktopQuery.addEventListener("change", (event) => {
       if (event.matches) setMenu(false);
     });
+
+    // Dil değişince butonun ekran okuyucu etiketi (Menüyü aç/kapat) yeni dilde yenilenir
+    document.addEventListener("mmc:lang", () => setMenu(header.classList.contains("is-open")));
   }
 
   // --- Kaydırınca menü arka planı -------------------------------------------
@@ -105,30 +117,25 @@
 
     // Esc ile kapanınca tarayıcı bu olayı gönderir
     lightbox.addEventListener("close", afterClose);
+
+    // Pencere açıkken dil değişirse açıklama yazısı yeni dilde gösterilir
+    document.addEventListener("mmc:lang", () => {
+      if (lightbox.open) show(current);
+    });
   }
 
   // --- İndirme penceresi (.exe / .deb seçimi) ----------------------------------
   // Sürüm bilgisi GitHub API'den canlı çekilir. API'ye ulaşılamazsa butonlar GitHub'daki
   // sürümler sayfasına gider. JavaScript yoksa İndir butonları zaten oraya gider.
   const dlDialog = document.getElementById("download-dialog");
-  const dlTriggers = document.querySelectorAll("[data-download]");
 
-  if (dlDialog && typeof dlDialog.showModal === "function" && dlTriggers.length) {
+  if (dlDialog && typeof dlDialog.showModal === "function") {
     const REPO = "Mehbur07/MehburMC-Launcher";
     const API_URL = `https://api.github.com/repos/${REPO}/releases?per_page=20`;
     const CACHE_KEY = "mmc-releases-v1";
     const CACHE_MS = 10 * 60 * 1000; // 10 dakika: GitHub'ın saatlik 60 istek sınırını korur
 
-    // Ekranda görünen yazılar (Faz 4'te İngilizce karşılıkları eklenecek)
-    const TEXT = {
-      loading: "Sürüm bilgisi alınıyor…",
-      latest: (version, date) => `Son sürüm: v${version} · ${date}`,
-      error: "Sürüm bilgisi şu an alınamadı. Butonlar seni GitHub'daki sürümler sayfasına götürecek.",
-      mobile: "MehburMC Launcher bir bilgisayar uygulamasıdır; telefon ve tablette çalışmaz. Bu sayfayı bilgisayarından açıp indirebilirsin.",
-      mac: "macOS şu an desteklenmiyor. Launcher yalnızca Windows ve Linux'ta çalışır.",
-      copy: "Kopyala",
-      copied: "Kopyalandı!",
-    };
+    // Ekrandaki yazılar i18n.js'teki "dl.*" anahtarlarından gelir
     const PATTERNS = { windows: /_x64-setup\.exe$/i, linux: /_amd64\.deb$/i };
 
     const statusEl = dlDialog.querySelector("[data-dl-status]");
@@ -141,6 +148,8 @@
     };
     let loadPromise = null;
     let opener = null;
+    let state = "idle"; // idle | loading | ok | error (dil değişince yazıyı yenilemek için)
+    let lastData = null;
 
     // Ziyaretçinin sistemi: telefon kontrolü önce (Android'in tanıtım yazısında da "Linux" geçer)
     function detectPlatform() {
@@ -163,7 +172,7 @@
         btn.classList.toggle("btn-primary", match);
         btn.classList.toggle("btn-ghost", !match);
       });
-      const note = platform === "mobile" ? TEXT.mobile : platform === "mac" ? TEXT.mac : "";
+      const note = platform === "mobile" ? t("dl.mobile") : platform === "mac" ? t("dl.mac") : "";
       noteEl.hidden = !note;
       noteEl.querySelector("span").textContent = note;
     }
@@ -231,11 +240,12 @@
       }
     }
 
+    // Boyut ve tarih seçili dilin biçimiyle yazılır (5,6 MB / 5.6 MB; 10 Kasım / November 10)
     function formatSize(bytes) {
-      return `${(bytes / 1048576).toLocaleString("tr-TR", { maximumFractionDigits: 1 })} MB`;
+      return `${(bytes / 1048576).toLocaleString(i18n.locale(), { maximumFractionDigits: 1 })} MB`;
     }
     function formatDate(iso) {
-      return new Date(iso).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+      return new Date(iso).toLocaleDateString(i18n.locale(), { day: "numeric", month: "long", year: "numeric" });
     }
 
     function render(data) {
@@ -246,9 +256,13 @@
         card.querySelector("[data-dl-size]").textContent = `v${asset.version} · ${formatSize(asset.size)}`;
         card.querySelector("[data-dl-link]").href = asset.url;
       });
-      if (data.linux) cmdEl.textContent = `sudo apt install ./${data.linux.name}`;
+      if (data.linux) {
+        // Gerçek komut yazıldı: dil değişince yer tutucu yazıyla ezilmesin
+        cmdEl.removeAttribute("data-i18n");
+        cmdEl.textContent = `sudo apt install ./${data.linux.name}`;
+      }
       const main = data.windows || data.linux;
-      statusEl.textContent = TEXT.latest(main.version, formatDate(main.date));
+      statusEl.textContent = t("dl.latest", { version: main.version, date: formatDate(main.date) });
     }
 
     function openDialog(trigger) {
@@ -257,21 +271,37 @@
       dlDialog.showModal();
       document.documentElement.classList.add("no-scroll");
       if (!loadPromise) {
-        statusEl.textContent = TEXT.loading;
+        state = "loading";
+        statusEl.textContent = t("dl.loading");
         loadPromise = loadReleases()
-          .then(render)
+          .then((data) => {
+            state = "ok";
+            lastData = data;
+            render(data);
+          })
           .catch(() => {
-            statusEl.textContent = TEXT.error;
+            state = "error";
+            statusEl.textContent = t("dl.error");
             loadPromise = null; // bir dahaki açılışta yeniden denenir
           });
       }
     }
 
-    dlTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", (event) => {
-        event.preventDefault();
-        openDialog(trigger);
-      });
+    // İndir butonları sayfanın genelinden dinlenir: dil değişince yeniden yazılan
+    // bağlantılar (ör. kaynak kod uyarısındaki "İndir") da çalışmaya devam eder
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-download]");
+      if (!trigger) return;
+      event.preventDefault();
+      openDialog(trigger);
+    });
+
+    // Dil değişince JavaScript'in yazdığı metinler yeni dilde yenilenir
+    document.addEventListener("mmc:lang", () => {
+      if (state === "ok" && lastData) render(lastData);
+      else if (state === "loading") statusEl.textContent = t("dl.loading");
+      else if (state === "error") statusEl.textContent = t("dl.error");
+      if (dlDialog.open) applyPlatform();
     });
 
     // Kapanış temizliği: kaydırma kilidi kalkar, odak pencereyi açan butona döner
@@ -309,10 +339,10 @@
       } catch (e) {
         return; // pano kullanılamıyor: komut seçili kalır
       }
-      copyBtn.textContent = TEXT.copied;
+      copyBtn.textContent = t("dl.copied");
       copyBtn.classList.add("is-done");
       setTimeout(() => {
-        copyBtn.textContent = TEXT.copy;
+        copyBtn.textContent = t("dl.copy");
         copyBtn.classList.remove("is-done");
       }, 2000);
     });

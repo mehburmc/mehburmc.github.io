@@ -26,7 +26,8 @@ Düz HTML, CSS ve JavaScript; kurulum veya build adımı yoktur. GitHub Pages ü
 index.html          ana sayfa
 assets/
   css/style.css     tüm stiller (renk değişkenleri en üstte)
-  js/main.js        menü ve küçük davranışlar
+  js/i18n.js        dil sistemi ve İngilizce çeviriler
+  js/main.js        menü, galeri ve indirme penceresi
   fonts/            gömülü yazı tipleri + lisansları (SIL OFL)
   img/              logo, menü ikonu, sosyal medya önizleme görseli
   img/screenshots/  launcher ekran görüntüleri (tam boy + küçük önizleme)
@@ -45,6 +46,13 @@ python -m http.server 8000
 ```
 
 Sonra tarayıcıda `http://localhost:8000` adresini aç.
+
+## Çeviri eklemek / değiştirmek
+
+Türkçe metinler doğrudan `index.html` içindedir. Çevrilecek her metnin etiketinde
+`data-i18n="anahtar"` bulunur; İngilizcesi `assets/js/i18n.js` dosyasındaki `en` bölümüne aynı
+anahtarla yazılır. Resim açıklaması gibi özellikler için `data-i18n-attr="alt:anahtar"` kullanılır.
+Belirli bir dille açmak için adrese `?lang=en` veya `?lang=tr` eklenebilir.
 
 ## Görselleri yeniden üretmek
 
