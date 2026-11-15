@@ -29,8 +29,8 @@
       "dl.latest": "Son sürüm: v{version} · {date}",
       "dl.error": "Sürüm bilgisi şu an alınamadı. Butonlar seni GitHub'daki sürümler sayfasına götürecek.",
       "dl.mobile":
-        "MehburMC Launcher bir bilgisayar uygulamasıdır; telefon ve tablette çalışmaz. Bu sayfayı bilgisayarından açıp indirebilirsin.",
-      "dl.mac": "macOS şu an desteklenmiyor. Launcher yalnızca Windows ve Linux'ta çalışır.",
+        "MehburMC Launcher'ın iPhone ve iPad sürümü yok. Android telefonlar için .apk, bilgisayarlar için .exe ve .deb sürümleri var.",
+      "dl.mac": "macOS şu an desteklenmiyor. Launcher Windows, Linux ve Android'de çalışır.",
       "dl.copy": "Kopyala",
       "dl.copied": "Kopyalandı!",
       // 404 sayfasının rastgele espri mesajları (404.js her açılışta birini seçer)
@@ -121,6 +121,9 @@
       "dl.winMeta": "Windows 10 / 11 · 64-bit",
       "dl.winBtn": "Download for Windows (.exe)",
       "dl.linuxBtn": "Download for Linux (.deb)",
+      "dl.androidMeta": "Android 7.0+ · arm64 · <code>.apk</code> · beta",
+      "dl.androidBtn": "Download for Android (.apk)",
+      "dl.androidHint": "Minecraft Java Edition runs on the phone. Open the APK on your phone to install it; allow \"unknown sources\" if asked.",
       "dl.cmdHint": "To install, open a terminal in the folder with the file and run:",
       "dl.cmdPlaceholder": "sudo apt install ./MehburMC-Launcher_&lt;version&gt;_amd64.deb",
       "dl.allReleases": "All versions and release notes",
@@ -129,8 +132,8 @@
       "dl.latest": "Latest version: v{version} · {date}",
       "dl.error": "Couldn't fetch version info right now. The buttons will take you to the releases page on GitHub.",
       "dl.mobile":
-        "MehburMC Launcher is a desktop app; it doesn't run on phones or tablets. Open this page on your computer to download it.",
-      "dl.mac": "macOS isn't supported yet. The launcher only runs on Windows and Linux.",
+        "There is no iPhone or iPad version of MehburMC Launcher. There is an .apk for Android phones, and .exe and .deb versions for computers.",
+      "dl.mac": "macOS isn't supported yet. The launcher runs on Windows, Linux and Android.",
       "dl.copy": "Copy",
       "dl.copied": "Copied!",
 

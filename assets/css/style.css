@@ -976,7 +976,7 @@ code {
 
 /* İndirme penceresi (modal) */
 .modal {
-  width: min(860px, 100vw - 2 * var(--gutter));
+  width: min(1040px, 100vw - 2 * var(--gutter));
   max-width: none;
   max-height: calc(100vh - 2 * var(--gutter));
   padding: clamp(1.25rem, 3vw, 2rem);
@@ -1028,8 +1028,14 @@ code {
 
 .dl-options {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Üç seçenek (.exe / .deb / .apk): geniş ekranda yan yana, daralınca alta geçer */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
+}
+.dl-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 .dl-option {
   position: relative;
@@ -1101,6 +1107,7 @@ code {
 }
 .cmd-box {
   display: flex;
+  flex-wrap: wrap; /* dar sütunda Kopyala butonu komutun altına iner */
   align-items: stretch;
   gap: 0.5rem;
   padding: 0.5rem;
@@ -1109,7 +1116,7 @@ code {
   border-radius: var(--radius);
 }
 .cmd-box code {
-  flex: 1;
+  flex: 1 1 14rem;
   min-width: 0;
   padding: 0.35rem 0.25rem;
   background: none;
