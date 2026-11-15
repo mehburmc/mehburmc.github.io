@@ -5,6 +5,10 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-16
+
+Sitenin ilk yayın sürümü: https://mehburmc.github.io
+
 ### Eklendi
 - Proje iskeleti, yol haritası (ROADMAP) ve README oluşturuldu.
 - Logo, favicon, uygulama ikonları, sosyal medya önizleme görseli ve launcher ekran görüntüleri
@@ -19,7 +23,14 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
   tarayıcının dili seçiliyor ve tercih hatırlanıyor.
 - Minecraft havasında bir 404 sayfası eklendi: bloklardan "404", void'e düşen bloklar, rastgele
   espri mesajı ve ana sayfaya döndüren Respawn butonu.
-- TR/EN dil düğmesinin görünümü sadeleştirildi (köşeli kutu, eş genişlikli yazı).
 - Site linki paylaşılınca logolu önizleme kartı çıkıyor; arama motorları için site haritası ve
   uygulama bilgileri eklendi.
+- Sitenin kodu GPL-3.0 lisansıyla yayınlandı; logo, ekran görüntüleri ve yazı tipleri bu lisansa
+  dahil değil.
+
+### Değişti
+- TR/EN dil düğmesinin görünümü sadeleştirildi (köşeli kutu, eş genişlikli yazı).
 - Sayfa telefonda daha hızlı açılıyor: logo ve yazı tipi dosyaları küçültüldü (Lighthouse 85 → 96).
+
+[Unreleased]: https://github.com/mehburmc/mehburmc.github.io/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/mehburmc/mehburmc.github.io/releases/tag/v1.0.0

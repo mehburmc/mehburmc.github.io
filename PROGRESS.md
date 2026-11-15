@@ -1,5 +1,26 @@
 # İlerleme Kaydı
 
+### [2026-11-16 - Mehbur07]
+- **Yapılanlar & Kararlar:**
+  - Faz 7 (yayın kontrolü) `chore/release-v1.0.0` branch'i ve PR ile `main`'e alındı
+  - Canlı sitede gerçek tarayıcıyla (playwright-core + Chrome, geçici klasörde) 50 kontrol yapıldı,
+    hepsi geçti; `.exe`, `.deb` ve kaynak kod `.zip` tamamen indirilip doğrulandı
+  - Site kodu GPL-3.0 lisanslı (`LICENSE`, GNU'nun resmi metni); logo, ikonlar, ekran görüntüleri
+    ve yazı tipleri lisansa dahil değil
+  - CHANGELOG `[1.0.0] - 2026-11-16` başlığına taşındı; README "v1.0.0 yayında" oldu
+- **Son Commit:** a4f2e44 Merge pull request #6 from mehburmc/chore/seo-perf
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı onayıyla `main` üzerinde `v1.0.0` tag'ini atıp
+  göndermek (isteğe bağlı GitHub Release sayfası); ardından launcher README'sine site linki PR'ı
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Launcher README PR'ı bekliyor: launcher reposunda secret taraması, daha önce zararsız diye
+    onaylanan 2 bulguyu (Supabase anon anahtarı, sahte test token'ı) yeniden buldu. 029b8ab
+    commit'i dosyalara dokunduğu için parmak izleri değişti; `.gitleaksignore`'a yeni parmak
+    izlerinin eklenmesi için kullanıcı kararı bekleniyor
+  - Yerel launcher klasöründe `feature/android-touch-controls` branch'inde kullanıcının commit
+    edilmemiş işi var; launcher değişiklikleri o klasörde yapılmamalı
+  - `sitemap.xml` içindeki `lastmod` elle güncelleniyor
+
 ### [2026-11-15 - Mehbur07]
 - **Yapılanlar & Kararlar:**
   - Faz 6 (SEO, performans, erişilebilirlik) `chore/seo-perf` branch'i ve PR ile `main`'e alındı
