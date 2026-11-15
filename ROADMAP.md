@@ -26,7 +26,7 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Altıgen desenli sabit arka plan + üstte hafif cyan ışık, neon parlama efektleri
 - Yazı tipleri siteye gömülü: Orbitron (marka yazısı), Rajdhani (başlık/buton), Inter (metin)
 - Bileşenler: buton (dolu / çerçeveli / büyük), kart, etiket (chip), bölüm başlığı
-- Menü: kaydırınca koyulaşır; 880 px altında hamburger menü (Esc ile kapanır)
+- Menü: kaydırınca koyulaşır; 1040 px altında hamburger menü (Esc ile kapanır)
 - Alt bilgi: bağlantılar, lisans, "Mojang/Microsoft ile bağlantılı değildir" notu
 - Logo arka planı şeffaflaştırıldı (sayfada dikdörtgen izi kalmıyor)
 - Geçici giriş bölümü ve bölüm yer tutucuları (Faz 2'de dolacak)
@@ -57,9 +57,16 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - API'ye ulaşılamazsa butonlar GitHub'daki sürümler sayfasına gider; JavaScript yoksa da öyle
 - Test: Windows / Linux / Android senaryoları, API erişilemez durumu, Kopyala ve SSS bağlantısı
 
-## Faz 4: TR/EN dil desteği (`feature/i18n`)
-- Tüm metinler iki dilde, dil düğmesi
-- İlk açılışta tarayıcı dili, sonra kullanıcının seçimi hatırlanır
+## Faz 4: TR/EN dil desteği (`feature/i18n`) ✅
+- Türkçe metinler HTML'de, İngilizceleri `assets/js/i18n.js` içinde (`data-i18n` anahtarlarıyla);
+  112 anahtarın hepsinin İngilizcesi var
+- Menüde TR / EN düğmesi; seçim hatırlanır
+- Dil seçim sırası: `?lang=en|tr` → kayıtlı seçim → tarayıcı dili (Türkçe değilse İngilizce)
+- Sayfa başlığı, açıklaması, `<html lang>`, resim açıklamaları ve ekran okuyucu etiketleri de çevrilir
+- İndirme penceresinin yazıları, tarih ve boyut biçimi seçili dile göre (10 Kasım / November 10)
+- İndir butonları sayfa genelinden dinlenir; dil değişince yeniden yazılan bağlantılar da çalışır
+- Dil düğmesi menüye sığsın diye hamburger menü sınırı 880 px → 1040 px
+- Test: EN'de Türkçe satır kalmadı, TR → EN → TR birebir aynı, tarayıcı dili ve `?lang` çalışıyor
 
 ## Faz 5: 404 sayfası (`feature/404`)
 - Minecraft havası: "Bu chunk yüklenemedi!", piksel yazı tipi, düşen piksel bloklar

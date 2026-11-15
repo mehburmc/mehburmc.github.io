@@ -566,6 +566,42 @@ code {
   transform: scaleX(1);
 }
 
+/* Dil düğmesi (TR / EN): seçili dil cyan zeminle gösterilir */
+.lang-switch {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgb(11 17 23 / 0.7);
+}
+.lang-switch button {
+  min-width: 40px;
+  min-height: 32px;
+  padding: 0 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.lang-switch button:hover {
+  color: var(--text);
+}
+.lang-switch button[aria-pressed="true"] {
+  color: var(--on-accent);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgb(var(--accent-rgb) / 0.5);
+}
+
 /* Hamburger butonu: yalnızca dar ekranlarda görünür */
 .nav-toggle {
   display: none;
@@ -601,7 +637,7 @@ code {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 880px) {
+@media (max-width: 1040px) {
   .nav-toggle {
     display: inline-flex;
   }
@@ -649,6 +685,10 @@ code {
   }
   .nav-links a::after {
     display: none;
+  }
+
+  .nav-menu .lang-switch {
+    align-self: flex-start;
   }
 
   .nav-menu .btn {

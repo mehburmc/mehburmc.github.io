@@ -15,3 +15,5 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
   sistem gereksinimleri, sık sorulan sorular ve kaynak kod indirme bölümü.
 - İndir butonu artık Windows (.exe) ve Linux (.deb) arasında seçim sunan bir pencere açıyor;
   sürüm ve dosya boyutu GitHub'dan canlı geliyor, ziyaretçinin sistemi otomatik öne çıkıyor.
+- Site artık Türkçe ve İngilizce: menüdeki TR / EN düğmesiyle dil değişiyor, ilk açılışta
+  tarayıcının dili seçiliyor ve tercih hatırlanıyor.

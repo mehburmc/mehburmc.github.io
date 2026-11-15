@@ -2,6 +2,23 @@
 
 ### [2026-11-15 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 4 (TR/EN dil desteği) `feature/i18n` branch'i ve PR ile `main`'e alındı
+  - Türkçe metinler HTML'de, İngilizceleri `assets/js/i18n.js` içinde (112 anahtar, hepsi çevrildi);
+    menüde TR / EN düğmesi, seçim hatırlanıyor
+  - Dil seçim sırası: `?lang=` → kayıtlı seçim → tarayıcı dili (Türkçe değilse İngilizce)
+  - İndir butonları sayfa genelinden dinleniyor (dil değişince yeniden yazılan bağlantılar da çalışsın)
+  - Hamburger menü sınırı 880 px → 1040 px (dil düğmesiyle menü 881-920 px'te taşıyordu)
+- **Son Commit:** bc7b576 Merge pull request #3 from mehburmc/feature/downloads
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Faz 5: Minecraft havasında 404 sayfası
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Yeni metin eklerken `data-i18n` anahtarı ve `i18n.js` içindeki İngilizcesi birlikte eklenmeli
+  - Kullanım kılavuzu ve sorun giderme rehberi yalnızca Türkçe (İngilizce sitede "(Turkish)" notu var)
+  - m07-site'daki "MehburMC Launcher-Site" kartı `feature/mmc-site-card` branch'inde
+    (geçici worktree) yüklenmeyi bekliyor
+
+### [2026-11-15 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 3 (indirme sistemi) `feature/downloads` branch'i ve PR ile `main`'e alındı
   - İndir butonları `.exe` / `.deb` seçim penceresi açıyor; sürüm, dosya adı ve boyut GitHub
     API'den canlı geliyor, sonuç 10 dakika tarayıcı hafızasında tutuluyor

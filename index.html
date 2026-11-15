@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MehburMC Launcher: Hafif ve Reklamsız Minecraft Launcher'ı</title>
+    <title data-i18n="meta.title">MehburMC Launcher: Hafif ve Reklamsız Minecraft Launcher'ı</title>
     <meta
       name="description"
+      data-i18n-attr="content:meta.desc"
       content="Windows ve Linux için hafif, reklamsız ve telemetrisiz Minecraft Java Edition launcher'ı. Modları, skinleri ve arkadaşlarını tek yerden yönet."
     />
     <meta name="theme-color" content="#05070a" />
@@ -25,6 +26,8 @@
     <script>
       document.documentElement.classList.add("js");
     </script>
+    <!-- Önce dil sistemi yüklenir; main.js onun yazılarını kullanır (defer sırası korunur) -->
+    <script src="assets/js/i18n.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </head>
 
@@ -54,12 +57,12 @@
       <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
     </svg>
 
-    <a class="skip-link" href="#main">İçeriğe geç</a>
+    <a class="skip-link" href="#main" data-i18n="skip">İçeriğe geç</a>
 
     <!-- ===== Menü ===== -->
     <header class="site-header">
-      <nav class="nav container" aria-label="Ana menü">
-        <a class="brand" href="#home" aria-label="MehburMC Launcher ana sayfa">
+      <nav class="nav container" aria-label="Ana menü" data-i18n-attr="aria-label:nav.label">
+        <a class="brand" href="#home" aria-label="MehburMC Launcher ana sayfa" data-i18n-attr="aria-label:nav.home">
           <img src="assets/img/icon-128.webp" alt="" width="38" height="38" />
           <span class="brand-name">Mehbur<span>MC</span></span>
         </a>
@@ -72,6 +75,7 @@
           aria-label="Menüyü aç"
           data-label-open="Menüyü aç"
           data-label-close="Menüyü kapat"
+          data-i18n-attr="aria-label:nav.open;data-label-open:nav.open;data-label-close:nav.close"
         >
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
@@ -80,16 +84,21 @@
 
         <div class="nav-menu" id="nav-menu">
           <ul class="nav-links">
-            <li><a href="#features">Özellikler</a></li>
-            <li><a href="#screenshots">Fotoğraflar</a></li>
-            <li><a href="#about">Hakkında</a></li>
-            <li><a href="#faq">SSS</a></li>
-            <li><a href="#source">Kaynak Kod</a></li>
+            <li><a href="#features" data-i18n="nav.features">Özellikler</a></li>
+            <li><a href="#screenshots" data-i18n="nav.screenshots">Fotoğraflar</a></li>
+            <li><a href="#about" data-i18n="nav.about">Hakkında</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">SSS</a></li>
+            <li><a href="#source" data-i18n="nav.source">Kaynak Kod</a></li>
           </ul>
+          <!-- Dil düğmesi (TR / EN) -->
+          <div class="lang-switch" role="group" aria-label="Dil seçimi" data-i18n-attr="aria-label:lang.label">
+            <button type="button" data-set-lang="tr" lang="tr" title="Türkçe" aria-pressed="true">TR</button>
+            <button type="button" data-set-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
+          </div>
           <!-- data-download: .exe / .deb seçim penceresini açar (JavaScript yoksa GitHub'a gider) -->
           <a class="btn btn-primary" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>
             <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-            İndir
+            <span data-i18n="nav.download">İndir</span>
           </a>
         </div>
       </nav>
@@ -108,17 +117,18 @@
             width="640"
             height="430"
             alt="MehburMC Launcher logosu"
+            data-i18n-attr="alt:hero.logoAlt"
             fetchpriority="high"
           />
           <!-- lang="en": büyük harfe çevirirken "WİNDOWS" değil "WINDOWS" olsun -->
           <p class="chip" lang="en">Windows · Linux</p>
-          <p class="hero-tagline">Hafif, reklamsız ve telemetrisiz Minecraft Java Edition launcher'ı.</p>
-          <p class="hero-sub">Modlarını, skinlerini ve arkadaşlarını tek yerden yönet.</p>
+          <p class="hero-tagline" data-i18n="hero.tagline">Hafif, reklamsız ve telemetrisiz Minecraft Java Edition launcher'ı.</p>
+          <p class="hero-sub" data-i18n="hero.sub">Modlarını, skinlerini ve arkadaşlarını tek yerden yönet.</p>
 
           <div class="hero-actions">
             <a class="btn btn-primary btn-lg" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>
               <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-              MehburMC Launcher'ı İndir
+              <span data-i18n="hero.download">MehburMC Launcher'ı İndir</span>
             </a>
             <a class="btn btn-ghost btn-lg" href="https://github.com/Mehbur07/MehburMC-Launcher" rel="noopener">
               <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
@@ -127,10 +137,10 @@
           </div>
 
           <ul class="trust-list">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>Reklam yok</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>Telemetri yok</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>Açık kaynak</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>Ücretsiz</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="trust.ads">Reklam yok</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="trust.telemetry">Telemetri yok</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="trust.open">Açık kaynak</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg><span data-i18n="trust.free">Ücretsiz</span></li>
           </ul>
 
           <figure class="hero-shot">
@@ -141,6 +151,7 @@
               width="1280"
               height="800"
               alt="MehburMC Launcher'ın mod tarayıcısı: Modrinth'teki modların listesi"
+              data-i18n-attr="alt:hero.shotAlt"
               decoding="async"
             />
           </figure>
@@ -150,54 +161,54 @@
       <!-- ===== Özellikler ===== -->
       <section class="section" id="features" aria-labelledby="features-title">
         <div class="container">
-          <h2 class="section-title is-centered" id="features-title">Özellikler</h2>
-          <p class="section-lead is-centered">Oyunu başlatmaktan fazlası: modlar, skinler ve arkadaşların tek pencerede.</p>
+          <h2 class="section-title is-centered" id="features-title" data-i18n="features.title">Özellikler</h2>
+          <p class="section-lead is-centered" data-i18n="features.lead">Oyunu başlatmaktan fazlası: modlar, skinler ve arkadaşların tek pencerede.</p>
 
           <ul class="feature-grid">
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg></span>
-              <h3>Profiller</h3>
-              <p>Vanilla, Fabric, Quilt, Legacy Fabric, Forge, NeoForge ve OptiFine. Her profilin kendi mods, saves ve config klasörü var.</p>
+              <h3 data-i18n="f.profiles.t">Profiller</h3>
+              <p data-i18n="f.profiles.d">Vanilla, Fabric, Quilt, Legacy Fabric, Forge, NeoForge ve OptiFine. Her profilin kendi mods, saves ve config klasörü var.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-cup" /></svg></span>
-              <h3>Otomatik Java</h3>
-              <p>Gereken Java sürümünü (Adoptium Temurin) launcher kendisi indirir. Ayrıca bir şey kurmana gerek yok.</p>
+              <h3 data-i18n="f.java.t">Otomatik Java</h3>
+              <p data-i18n="f.java.d">Gereken Java sürümünü (Adoptium Temurin) launcher kendisi indirir. Ayrıca bir şey kurmana gerek yok.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-search" /></svg></span>
-              <h3>Mod Tarayıcı</h3>
-              <p>Modrinth'te mod, modpack, resource pack ve shader ara, tek tıkla kur. Güncellemeleri gör, <code>.mrpack</code> dosyalarını içe aktar.</p>
+              <h3 data-i18n="f.browser.t">Mod Tarayıcı</h3>
+              <p data-i18n="f.browser.d">Modrinth'te mod, modpack, resource pack ve shader ara, tek tıkla kur. Güncellemeleri gör, <code>.mrpack</code> dosyalarını içe aktar.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-toggle" /></svg></span>
-              <h3>Mod Toggle</h3>
-              <p>Modları tek tıkla aç/kapat, mod grupları oluştur. Bir profilin bütün modlarını başka profile aktar; farklı sürüm için uygun dosyayı Modrinth'ten bulur.</p>
+              <h3 lang="en">Mod Toggle</h3>
+              <p data-i18n="f.toggle.d">Modları tek tıkla aç/kapat, mod grupları oluştur. Bir profilin bütün modlarını başka profile aktar; farklı sürüm için uygun dosyayı Modrinth'ten bulur.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-shirt" /></svg></span>
-              <h3>Skin &amp; Cape</h3>
-              <p>Skin ve pelerin kütüphanesi, hazır koleksiyonlar, 3B önizlemeli piksel editörü ve toplulukla paylaşma.</p>
+              <h3 lang="en">Skin &amp; Cape</h3>
+              <p data-i18n="f.skins.d">Skin ve pelerin kütüphanesi, hazır koleksiyonlar, 3B önizlemeli piksel editörü ve toplulukla paylaşma.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-users" /></svg></span>
-              <h3>Arkadaşlar</h3>
-              <p>Arkadaş koduyla ekle, mesajlaş, grup sohbeti kur. 16 kişiye kadar sesli arama, ekran ve mod listesi paylaşma.</p>
+              <h3 data-i18n="f.friends.t">Arkadaşlar</h3>
+              <p data-i18n="f.friends.d">Arkadaş koduyla ekle, mesajlaş, grup sohbeti kur. 16 kişiye kadar sesli arama, ekran ve mod listesi paylaşma.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-box" /></svg></span>
-              <h3>MehburMC Kütüphanesi</h3>
-              <p>Oyuncuların yüklediği modlar ve paketler. Dosyalar otomatik taranır, yönetici onayından sonra yayınlanır.</p>
+              <h3 data-i18n="f.library.t">MehburMC Kütüphanesi</h3>
+              <p data-i18n="f.library.d">Oyuncuların yüklediği modlar ve paketler. Dosyalar otomatik taranır, yönetici onayından sonra yayınlanır.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-server" /></svg></span>
-              <h3>Sunucular</h3>
-              <p>Favori sunucularını kaydet, ping ve oyuncu sayısını gör, tek tıkla katıl.</p>
+              <h3 data-i18n="f.servers.t">Sunucular</h3>
+              <p data-i18n="f.servers.d">Favori sunucularını kaydet, ping ve oyuncu sayısını gör, tek tıkla katıl.</p>
             </li>
             <li class="card feature">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-sparkle" /></svg></span>
-              <h3>Ve Dahası</h3>
-              <p>Minecraft haberleri, çökme analizi, istediğin renkte tema ve Türkçe/İngilizce arayüz.</p>
+              <h3 data-i18n="f.more.t">Ve Dahası</h3>
+              <p data-i18n="f.more.d">Minecraft haberleri, çökme analizi, istediğin renkte tema ve Türkçe/İngilizce arayüz.</p>
             </li>
           </ul>
         </div>
@@ -206,53 +217,53 @@
       <!-- ===== Fotoğraflar (tıklayınca büyüyen galeri) ===== -->
       <section class="section" id="screenshots" aria-labelledby="screenshots-title">
         <div class="container">
-          <h2 class="section-title is-centered" id="screenshots-title">Fotoğraflar</h2>
-          <p class="section-lead is-centered">Büyütmek için bir görüntüye tıkla.</p>
+          <h2 class="section-title is-centered" id="screenshots-title" data-i18n="shots.title">Fotoğraflar</h2>
+          <p class="section-lead is-centered" data-i18n="shots.lead">Büyütmek için bir görüntüye tıkla.</p>
 
           <!-- JavaScript yoksa bağlantılar resmi doğrudan açar -->
           <ul class="gallery">
             <li>
-              <a class="shot" href="assets/img/screenshots/mod-browser.webp" data-caption="Mod Tarayıcı: Modrinth'te arama ve tek tıkla kurulum">
-                <img src="assets/img/screenshots/mod-browser-thumb.webp" width="640" height="400" alt="Mod Tarayıcı ekranı" loading="lazy" decoding="async" />
-                <span class="shot-caption">Mod Tarayıcı</span>
+              <a class="shot" href="assets/img/screenshots/mod-browser.webp" data-caption="Mod Tarayıcı: Modrinth'te arama ve tek tıkla kurulum" data-i18n-attr="data-caption:shots.browser.cap">
+                <img src="assets/img/screenshots/mod-browser-thumb.webp" width="640" height="400" alt="Mod Tarayıcı ekranı" data-i18n-attr="alt:shots.browser.alt" loading="lazy" decoding="async" />
+                <span class="shot-caption" data-i18n="f.browser.t">Mod Tarayıcı</span>
               </a>
             </li>
             <li>
-              <a class="shot" href="assets/img/screenshots/skins.webp" data-caption="Skin &amp; Cape: kütüphane, koleksiyonlar ve 3B önizleme">
-                <img src="assets/img/screenshots/skins-thumb.webp" width="640" height="400" alt="Skin ve pelerin ekranı" loading="lazy" decoding="async" />
+              <a class="shot" href="assets/img/screenshots/skins.webp" data-caption="Skin &amp; Cape: kütüphane, koleksiyonlar ve 3B önizleme" data-i18n-attr="data-caption:shots.skins.cap">
+                <img src="assets/img/screenshots/skins-thumb.webp" width="640" height="400" alt="Skin ve pelerin ekranı" data-i18n-attr="alt:shots.skins.alt" loading="lazy" decoding="async" />
                 <span class="shot-caption" lang="en">Skin &amp; Cape</span>
               </a>
             </li>
             <li>
-              <a class="shot" href="assets/img/screenshots/mod-toggle.webp" data-caption="Mod Toggle: modları aç/kapat, grupla ve profiller arasında aktar">
-                <img src="assets/img/screenshots/mod-toggle-thumb.webp" width="640" height="400" alt="Mod Toggle ekranı" loading="lazy" decoding="async" />
-                <span class="shot-caption">Mod Toggle</span>
+              <a class="shot" href="assets/img/screenshots/mod-toggle.webp" data-caption="Mod Toggle: modları aç/kapat, grupla ve profiller arasında aktar" data-i18n-attr="data-caption:shots.toggle.cap">
+                <img src="assets/img/screenshots/mod-toggle-thumb.webp" width="640" height="400" alt="Mod Toggle ekranı" data-i18n-attr="alt:shots.toggle.alt" loading="lazy" decoding="async" />
+                <span class="shot-caption" lang="en">Mod Toggle</span>
               </a>
             </li>
             <li>
-              <a class="shot" href="assets/img/screenshots/friends.webp" data-caption="Arkadaşlar: mesajlaşma, grup sohbeti ve sesli arama">
-                <img src="assets/img/screenshots/friends-thumb.webp" width="640" height="400" alt="Arkadaşlar ekranı" loading="lazy" decoding="async" />
-                <span class="shot-caption">Arkadaşlar</span>
+              <a class="shot" href="assets/img/screenshots/friends.webp" data-caption="Arkadaşlar: mesajlaşma, grup sohbeti ve sesli arama" data-i18n-attr="data-caption:shots.friends.cap">
+                <img src="assets/img/screenshots/friends-thumb.webp" width="640" height="400" alt="Arkadaşlar ekranı" data-i18n-attr="alt:shots.friends.alt" loading="lazy" decoding="async" />
+                <span class="shot-caption" data-i18n="f.friends.t">Arkadaşlar</span>
               </a>
             </li>
           </ul>
-          <p class="note is-centered">Ekran görüntülerindeki hesaplar, arkadaşlar ve mesajlar örnek verilerdir.</p>
+          <p class="note is-centered" data-i18n="shots.note">Ekran görüntülerindeki hesaplar, arkadaşlar ve mesajlar örnek verilerdir.</p>
         </div>
       </section>
 
       <!-- Büyük görüntü penceresi (lightbox) -->
-      <dialog class="lightbox" id="lightbox" aria-label="Ekran görüntüsü">
+      <dialog class="lightbox" id="lightbox" aria-label="Ekran görüntüsü" data-i18n-attr="aria-label:lb.label">
         <figure class="lightbox-figure">
           <img class="lightbox-img" src="" alt="" width="1280" height="800" />
           <figcaption class="lightbox-caption"></figcaption>
         </figure>
-        <button class="lightbox-btn lightbox-close" type="button" aria-label="Kapat">
+        <button class="lightbox-btn lightbox-close" type="button" aria-label="Kapat" data-i18n-attr="aria-label:common.close">
           <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
         </button>
-        <button class="lightbox-btn lightbox-prev" type="button" aria-label="Önceki görüntü">
+        <button class="lightbox-btn lightbox-prev" type="button" aria-label="Önceki görüntü" data-i18n-attr="aria-label:lb.prev">
           <svg class="icon flip" aria-hidden="true"><use href="#i-chevron" /></svg>
         </button>
-        <button class="lightbox-btn lightbox-next" type="button" aria-label="Sonraki görüntü">
+        <button class="lightbox-btn lightbox-next" type="button" aria-label="Sonraki görüntü" data-i18n-attr="aria-label:lb.next">
           <svg class="icon" aria-hidden="true"><use href="#i-chevron" /></svg>
         </button>
       </dialog>
@@ -261,10 +272,10 @@
       <dialog class="modal" id="download-dialog" aria-labelledby="dl-title">
         <div class="modal-head">
           <div>
-            <h2 class="modal-title" id="dl-title">MehburMC Launcher'ı İndir</h2>
+            <h2 class="modal-title" id="dl-title" data-i18n="dl.title">MehburMC Launcher'ı İndir</h2>
             <p class="modal-sub" data-dl-status aria-live="polite">Sürüm bilgisi alınıyor…</p>
           </div>
-          <button class="lightbox-btn modal-close" type="button" aria-label="Kapat">
+          <button class="lightbox-btn modal-close" type="button" aria-label="Kapat" data-i18n-attr="aria-label:common.close">
             <svg class="icon" aria-hidden="true"><use href="#i-close" /></svg>
           </button>
         </div>
@@ -277,12 +288,12 @@
 
         <div class="dl-options">
           <article class="dl-option" data-os="windows">
-            <span class="dl-badge" hidden>Senin sistemin</span>
+            <span class="dl-badge" hidden data-i18n="dl.yours">Senin sistemin</span>
             <div class="req-head">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-windows" /></svg></span>
               <div>
                 <h3 lang="en">Windows</h3>
-                <p class="dl-meta">Windows 10 / 11 · 64 bit</p>
+                <p class="dl-meta" data-i18n="dl.winMeta">Windows 10 / 11 · 64 bit</p>
               </div>
             </div>
             <p class="dl-file">
@@ -291,12 +302,12 @@
             </p>
             <a class="btn btn-ghost dl-btn" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-dl-link>
               <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-              <span><span lang="en">Windows</span> için İndir <span lang="en">(.exe)</span></span>
+              <span data-i18n="dl.winBtn"><span lang="en">Windows</span> için İndir <span lang="en">(.exe)</span></span>
             </a>
           </article>
 
           <article class="dl-option" data-os="linux">
-            <span class="dl-badge" hidden>Senin sistemin</span>
+            <span class="dl-badge" hidden data-i18n="dl.yours">Senin sistemin</span>
             <div class="req-head">
               <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal" /></svg></span>
               <div>
@@ -310,22 +321,22 @@
             </p>
             <a class="btn btn-ghost dl-btn" href="https://github.com/Mehbur07/MehburMC-Launcher/releases" data-dl-link>
               <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-              <span><span lang="en">Linux</span> için İndir <span lang="en">(.deb)</span></span>
+              <span data-i18n="dl.linuxBtn"><span lang="en">Linux</span> için İndir <span lang="en">(.deb)</span></span>
             </a>
             <div class="dl-cmd">
-              <p>Kurulum: dosyanın olduğu klasörde terminal açıp şunu çalıştır:</p>
+              <p data-i18n="dl.cmdHint">Kurulum: dosyanın olduğu klasörde terminal açıp şunu çalıştır:</p>
               <div class="cmd-box">
-                <code data-dl-cmd>sudo apt install ./MehburMC-Launcher_&lt;sürüm&gt;_amd64.deb</code>
-                <button class="copy-btn" type="button" data-copy>Kopyala</button>
+                <code data-dl-cmd data-i18n="dl.cmdPlaceholder">sudo apt install ./MehburMC-Launcher_&lt;sürüm&gt;_amd64.deb</code>
+                <button class="copy-btn" type="button" data-copy data-i18n="dl.copy">Kopyala</button>
               </div>
             </div>
           </article>
         </div>
 
         <p class="modal-foot">
-          <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/releases" rel="noopener">Tüm sürümler ve sürüm notları</a>
+          <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/releases" rel="noopener" data-i18n="dl.allReleases">Tüm sürümler ve sürüm notları</a>
           <span aria-hidden="true">·</span>
-          <a class="text-link" href="#faq">Windows uyarı verirse ne yapmalıyım?</a>
+          <a class="text-link" href="#faq" data-i18n="dl.smartscreen">Windows uyarı verirse ne yapmalıyım?</a>
         </p>
       </dialog>
 
@@ -334,36 +345,36 @@
         <div class="container">
           <div class="about-grid">
             <div class="about-text">
-              <h2 class="section-title" id="about-title">Hakkında</h2>
-              <p>
+              <h2 class="section-title" id="about-title" data-i18n="about.title">Hakkında</h2>
+              <p data-i18n="about.p1">
                 MehburMC Launcher, Minecraft Java Edition'ı açmanın hafif ve sade bir yolu. Reklam göstermez,
                 kullanım verisi toplamaz; oyun dosyaların, modların ve dünyaların yalnızca senin bilgisayarında
                 durur. Oyunun kendisi Mojang'ın resmi sunucularından indirilir.
               </p>
-              <p>
+              <p data-i18n="about.p2">
                 Rust ve Tauri ile yazıldığı için kurulum dosyası küçük, bellek kullanımı düşük. Yeni sürüm
                 çıktığında launcher bunu sana haber verir ve imzalı güncellemeyi tek tıkla kurar.
               </p>
               <p>
-                <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/docs/GIZLILIK.md" rel="noopener">Gizlilik politikası</a>
+                <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/docs/GIZLILIK.md" rel="noopener" data-i18n="about.privacy">Gizlilik politikası</a>
                 <span aria-hidden="true">·</span>
-                <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/docs/KULLANIM.md" rel="noopener">Kullanım kılavuzu</a>
+                <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/docs/KULLANIM.md" rel="noopener" data-i18n="about.guide">Kullanım kılavuzu</a>
               </p>
             </div>
 
             <aside class="card spec-card" aria-labelledby="spec-title">
-              <h3 id="spec-title">Teknik Bilgiler</h3>
+              <h3 id="spec-title" data-i18n="spec.title">Teknik Bilgiler</h3>
               <dl class="spec-list">
                 <div><dt>Platform</dt><dd>Windows, Linux</dd></div>
-                <div><dt>Oyun</dt><dd>Minecraft Java Edition</dd></div>
-                <div><dt>Çekirdek</dt><dd>Rust</dd></div>
-                <div><dt>Arayüz</dt><dd>Tauri 2 · React · TypeScript</dd></div>
-                <div><dt>Lisans</dt><dd>GPL-3.0</dd></div>
+                <div><dt data-i18n="spec.game">Oyun</dt><dd>Minecraft Java Edition</dd></div>
+                <div><dt data-i18n="spec.core">Çekirdek</dt><dd>Rust</dd></div>
+                <div><dt data-i18n="spec.ui">Arayüz</dt><dd>Tauri 2 · React · TypeScript</dd></div>
+                <div><dt data-i18n="spec.license">Lisans</dt><dd>GPL-3.0</dd></div>
               </dl>
             </aside>
           </div>
 
-          <h3 class="sub-title" id="requirements">Sistem Gereksinimleri</h3>
+          <h3 class="sub-title" id="requirements" data-i18n="req.title">Sistem Gereksinimleri</h3>
           <div class="req-grid">
             <div class="card req-card">
               <div class="req-head">
@@ -371,10 +382,10 @@
                 <h4 lang="en">Windows</h4>
               </div>
               <ul class="check-list">
-                <li>Windows 10 veya 11 (64 bit)</li>
-                <li>WebView2 (Windows 11'de hazır gelir)</li>
-                <li>Java gerekmez, launcher kendisi kurar</li>
-                <li>Oyun dosyalarını indirmek için internet</li>
+                <li data-i18n="req.win.os">Windows 10 veya 11 (64 bit)</li>
+                <li data-i18n="req.win.webview">WebView2 (Windows 11'de hazır gelir)</li>
+                <li data-i18n="req.java">Java gerekmez, launcher kendisi kurar</li>
+                <li data-i18n="req.net">Oyun dosyalarını indirmek için internet</li>
               </ul>
             </div>
             <div class="card req-card">
@@ -383,10 +394,10 @@
                 <h4 lang="en">Linux</h4>
               </div>
               <ul class="check-list">
-                <li>Ubuntu 26.04 veya MehburOS (64 bit)</li>
-                <li><code>.deb</code> paketi; gerekli paketler kurulumda yüklenir</li>
-                <li>Java gerekmez, launcher kendisi kurar</li>
-                <li>Oyun dosyalarını indirmek için internet</li>
+                <li data-i18n="req.linux.os">Ubuntu 26.04 veya MehburOS (64 bit)</li>
+                <li data-i18n="req.linux.deb"><code>.deb</code> paketi; gerekli paketler kurulumda yüklenir</li>
+                <li data-i18n="req.java">Java gerekmez, launcher kendisi kurar</li>
+                <li data-i18n="req.net">Oyun dosyalarını indirmek için internet</li>
               </ul>
             </div>
           </div>
@@ -396,20 +407,20 @@
       <!-- ===== Sık sorulan sorular ===== -->
       <section class="section" id="faq" aria-labelledby="faq-title">
         <div class="container container-narrow">
-          <h2 class="section-title is-centered" id="faq-title">Sık Sorulan Sorular</h2>
-          <p class="section-lead is-centered">Kurulum ve kullanım hakkında merak edilenler.</p>
+          <h2 class="section-title is-centered" id="faq-title" data-i18n="faq.title">Sık Sorulan Sorular</h2>
+          <p class="section-lead is-centered" data-i18n="faq.lead">Kurulum ve kullanım hakkında merak edilenler.</p>
 
           <div class="faq-list">
             <details class="faq">
-              <summary>Ücretsiz mi?</summary>
+              <summary data-i18n="faq.q1">Ücretsiz mi?</summary>
               <div class="faq-body">
-                <p>Evet, tamamen ücretsiz. Reklam ve ücretli özellik yok.</p>
+                <p data-i18n="faq.a1">Evet, tamamen ücretsiz. Reklam ve ücretli özellik yok.</p>
               </div>
             </details>
             <details class="faq">
-              <summary>Windows "bilgisayarınız korundu" uyarısı veriyor. Güvenli mi?</summary>
+              <summary data-i18n="faq.q2">Windows "bilgisayarınız korundu" uyarısı veriyor. Güvenli mi?</summary>
               <div class="faq-body">
-                <p>
+                <p data-i18n="faq.a2">
                   Launcher'ın henüz bir kod imzalama sertifikası olmadığı için Windows SmartScreen ilk
                   çalıştırmada "tanınmayan uygulama" uyarısı verebilir. <strong>Ek bilgi → Yine de çalıştır</strong>
                   ile devam edebilirsin. Kaynak kod herkese açık; dilersen GitHub'da inceleyebilirsin.
@@ -417,33 +428,33 @@
               </div>
             </details>
             <details class="faq">
-              <summary>Java kurmam gerekiyor mu?</summary>
+              <summary data-i18n="faq.q3">Java kurmam gerekiyor mu?</summary>
               <div class="faq-body">
-                <p>Hayır. Seçtiğin Minecraft sürümünün istediği Java'yı (Adoptium Temurin) launcher kendisi indirip kurar.</p>
+                <p data-i18n="faq.a3">Hayır. Seçtiğin Minecraft sürümünün istediği Java'yı (Adoptium Temurin) launcher kendisi indirip kurar.</p>
               </div>
             </details>
             <details class="faq">
-              <summary>Hangi hesapla giriş yapılıyor?</summary>
+              <summary data-i18n="faq.q4">Hangi hesapla giriş yapılıyor?</summary>
               <div class="faq-body">
-                <p>
+                <p data-i18n="faq.a4">
                   MehburMC hesabıyla (e-posta ya da Google) veya yalnızca bu bilgisayarda kalan yerel bir hesapla
                   girebilirsin. Oyunda çevrim dışı (offline) hesaplar kullanılır; Microsoft girişi yoktur.
                 </p>
               </div>
             </details>
             <details class="faq">
-              <summary>Launcher nasıl güncellenir?</summary>
+              <summary data-i18n="faq.q5">Launcher nasıl güncellenir?</summary>
               <div class="faq-body">
-                <p>
+                <p data-i18n="faq.a5">
                   Yeni sürüm çıkınca launcher'ın üst kısmında <strong>Güncelle</strong> butonu belirir. Tıklayınca imzalı
                   güncelleme indirilir, doğrulanır ve kurulur; siteden tekrar indirmene gerek kalmaz.
                 </p>
               </div>
             </details>
             <details class="faq">
-              <summary>Bir sorunla karşılaştım, ne yapmalıyım?</summary>
+              <summary data-i18n="faq.q6">Bir sorunla karşılaştım, ne yapmalıyım?</summary>
               <div class="faq-body">
-                <p>
+                <p data-i18n="faq.a6">
                   Önce <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/docs/SORUN_GIDERME.md" rel="noopener">sorun giderme rehberine</a>
                   göz at. Çözüm bulamazsan <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/issues" rel="noopener">GitHub'da bir hata kaydı (issue)</a> aç.
                 </p>
@@ -458,12 +469,12 @@
         <div class="container">
           <div class="card source-panel">
             <div class="source-text">
-              <h2 class="section-title" id="source-title">Kaynak Kod</h2>
-              <p>
+              <h2 class="section-title" id="source-title" data-i18n="source.title">Kaynak Kod</h2>
+              <p data-i18n="source.p">
                 MehburMC Launcher, GPL-3.0 lisanslı açık kaynak bir projedir. Kodunu inceleyebilir, kendi
                 bilgisayarında derleyebilir ve katkıda bulunabilirsin.
               </p>
-              <ul class="tag-list" aria-label="Kullanılan teknolojiler">
+              <ul class="tag-list" aria-label="Kullanılan teknolojiler" data-i18n-attr="aria-label:source.tech">
                 <li>Rust</li>
                 <li>Tauri 2</li>
                 <li>React</li>
@@ -473,16 +484,16 @@
               <div class="source-actions">
                 <a class="btn btn-primary" href="https://github.com/Mehbur07/MehburMC-Launcher" rel="noopener">
                   <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
-                  <span><span lang="en">GitHub</span>'da Gör</span>
+                  <span data-i18n="source.view"><span lang="en">GitHub</span>'da Gör</span>
                 </a>
                 <a class="btn btn-ghost" href="https://github.com/Mehbur07/MehburMC-Launcher/archive/refs/heads/main.zip">
                   <svg class="icon" aria-hidden="true"><use href="#i-zip" /></svg>
-                  <span>Kaynak Kodu İndir <span lang="en">(.zip)</span></span>
+                  <span data-i18n="source.zip">Kaynak Kodu İndir <span lang="en">(.zip)</span></span>
                 </a>
               </div>
               <p class="notice">
                 <svg class="icon" aria-hidden="true"><use href="#i-warn" /></svg>
-                <span>
+                <span data-i18n="source.notice">
                   Kaynak kod yalnızca geliştiriciler içindir, oynamak için gerekmez. Launcher'ı kullanmak için
                   <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>İndir</a> butonunu kullan.
                 </span>
@@ -498,11 +509,11 @@
       <!-- ===== Son çağrı ===== -->
       <section class="cta" aria-labelledby="cta-title">
         <div class="container cta-inner">
-          <h2 id="cta-title">Oyuna hazır mısın?</h2>
-          <p>Kur, sevdiğin sürümü seç ve oyna.</p>
+          <h2 id="cta-title" data-i18n="cta.title">Oyuna hazır mısın?</h2>
+          <p data-i18n="cta.p">Kur, sevdiğin sürümü seç ve oyna.</p>
           <a class="btn btn-primary btn-lg" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>
             <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-            MehburMC Launcher'ı İndir
+            <span data-i18n="hero.download">MehburMC Launcher'ı İndir</span>
           </a>
         </div>
       </section>
@@ -512,27 +523,27 @@
     <footer class="site-footer">
       <div class="container footer-top">
         <div class="footer-brand">
-          <a class="brand" href="#home" aria-label="MehburMC Launcher ana sayfa">
+          <a class="brand" href="#home" aria-label="MehburMC Launcher ana sayfa" data-i18n-attr="aria-label:nav.home">
             <img src="assets/img/icon-64.webp" alt="" width="38" height="38" loading="lazy" />
             <span class="brand-name">Mehbur<span>MC</span></span>
           </a>
-          <p>Windows ve Linux için hafif, reklamsız ve telemetrisiz Minecraft Java Edition launcher'ı.</p>
+          <p data-i18n="footer.desc">Windows ve Linux için hafif, reklamsız ve telemetrisiz Minecraft Java Edition launcher'ı.</p>
         </div>
 
         <nav aria-labelledby="footer-links-title">
-          <h2 class="footer-title" id="footer-links-title">Bağlantılar</h2>
+          <h2 class="footer-title" id="footer-links-title" data-i18n="footer.links">Bağlantılar</h2>
           <ul class="footer-links">
             <li><a href="https://github.com/Mehbur07/MehburMC-Launcher" rel="noopener">GitHub</a></li>
-            <li><a href="https://github.com/Mehbur07/MehburMC-Launcher/releases" rel="noopener">Tüm Sürümler</a></li>
-            <li><a href="https://github.com/Mehbur07/MehburMC-Launcher/issues" rel="noopener">Hata Bildir</a></li>
-            <li><a href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/LICENSE" rel="noopener">Lisans (GPL-3.0)</a></li>
+            <li><a href="https://github.com/Mehbur07/MehburMC-Launcher/releases" rel="noopener" data-i18n="footer.releases">Tüm Sürümler</a></li>
+            <li><a href="https://github.com/Mehbur07/MehburMC-Launcher/issues" rel="noopener" data-i18n="footer.bug">Hata Bildir</a></li>
+            <li><a href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/LICENSE" rel="noopener" data-i18n="footer.license">Lisans (GPL-3.0)</a></li>
           </ul>
         </nav>
       </div>
 
       <div class="container footer-bottom">
-        <p>© <span data-year>2026</span> MehburMC. Launcher GPL-3.0 lisansı ile açık kaynaklıdır.</p>
-        <p class="footer-legal">
+        <p>© <span data-year>2026</span> MehburMC. <span data-i18n="footer.copy">Launcher GPL-3.0 lisansı ile açık kaynaklıdır.</span></p>
+        <p class="footer-legal" data-i18n="footer.legal">
           Minecraft, Mojang AB'nin ticari markasıdır. MehburMC Launcher; Mojang veya Microsoft ile
           bağlantılı değildir.
         </p>
