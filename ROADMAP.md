@@ -90,7 +90,7 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
   erişilebilirlik, en iyi uygulamalar ve SEO 100. Masaüstü: hepsi 100
 - Klavye ve "az hareket" desteği önceki fazlarda eklenmişti; Lighthouse erişilebilirlik 100
 
-## Faz 7: Yayın kontrolü (`chore/release-v1.0.0`)
+## Faz 7: Yayın kontrolü (`chore/release-v1.0.0`) ✅
 - Canlı sitede gerçek tarayıcıyla 50 kontrol yapıldı, hepsi geçti: 4 İndir butonunun hepsi
   pencereyi açıyor; Windows / Linux / macOS / Android'de doğru seçenek veya bilgi notu çıkıyor;
   pencere X, Esc ve dışarı tıklamayla kapanıyor; Kopyala, menü bağlantıları, hamburger menü,
@@ -101,8 +101,10 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Sitedeki 9 GitHub bağlantısı, 28 site dosyası, paylaşım görseli, `sitemap.xml`, `robots.txt`
   ve `site.webmanifest` yanıt veriyor
 - Sitenin kodu GPL-3.0 (`LICENSE`); logo, ekran görüntüleri ve yazı tipleri lisansa dahil değil
-- CHANGELOG `1.0.0` başlığına taşındı; `v1.0.0` tag'i PR merge edildikten sonra atılacak
-- Launcher README'sine site linki: launcher reposunda ayrı PR
+- CHANGELOG `1.0.0` başlığına taşındı; `v1.0.0` tag'i ve GitHub Release sayfası yayında
+- Launcher README'sine site linki: launcher reposunda ayrı PR (Mehbur07/MehburMC-Launcher#4)
+- m07-site'taki "MehburMC Launcher-Site" kartı "Hazır Projeler"e taşındı; "Siteye Git" ve
+  "Kaynak Kodu" düğmeleri eklendi
 
 ## İleride (plan dışı)
 - Portable zip seçeneği, sürüm notları sayfası, indirme sayacı, Discord linki, özel alan adı
