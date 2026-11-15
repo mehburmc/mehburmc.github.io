@@ -33,6 +33,14 @@
       "dl.mac": "macOS şu an desteklenmiyor. Launcher yalnızca Windows ve Linux'ta çalışır.",
       "dl.copy": "Kopyala",
       "dl.copied": "Kopyalandı!",
+      // 404 sayfasının rastgele espri mesajları (404.js her açılışta birini seçer)
+      "nf.j1": "Sayfa lavlara düştü. Envanter de gitti.",
+      "nf.j2": "Render mesafen bu sayfaya yetmiyor.",
+      "nf.j3": "Bu seed'de böyle bir sayfa yok.",
+      "nf.j4": "Sayfa bedrock'un altında kaldı.",
+      "nf.j5": "Biri bu sayfayı kazıp götürmüş; geriye sadece hava bloğu kaldı.",
+      "nf.j6": "Sayfa başka bir boyuta ışınlandı.",
+      "nf.j7": "Burada bir sayfa vardı, sonra gece oldu.",
     },
 
     en: {
@@ -189,6 +197,21 @@
       "footer.license": "License (GPL-3.0)",
       "footer.copy": "The launcher is open source under the GPL-3.0 license.",
       "footer.legal": "Minecraft is a trademark of Mojang AB. MehburMC Launcher is not affiliated with Mojang or Microsoft.",
+
+      // 404 sayfası
+      "nf.metaTitle": "404: This chunk failed to load | MehburMC Launcher",
+      "nf.heading": "This chunk failed to load!",
+      "nf.text": "The page you're looking for may have fallen into the void. Or it was never generated in this world.",
+      "nf.server": "[Server]",
+      "nf.looked": "Requested location:",
+      "nf.hint": "Respawn takes you to the home page, a.k.a. the spawn point.",
+      "nf.j1": "The page fell into lava. The inventory is gone too.",
+      "nf.j2": "Your render distance doesn't reach this page.",
+      "nf.j3": "There's no such page in this seed.",
+      "nf.j4": "The page is stuck below bedrock.",
+      "nf.j5": "Someone mined this page away; only air blocks are left.",
+      "nf.j6": "The page teleported to another dimension.",
+      "nf.j7": "There was a page here, then night fell.",
     },
   };
 

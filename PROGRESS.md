@@ -2,6 +2,23 @@
 
 ### [2026-11-15 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 5 (404 sayfası) `feature/404` branch'i ve PR ile `main`'e alındı: bloklardan "404",
+    void'e düşen bloklar, 7 espriden rastgele biri, aranan adres, Respawn butonu, TR/EN
+  - 404 sayfasındaki yollar kökten başlıyor (`/assets/...`); GitHub Pages sayfayı her adreste gösterir
+  - TR/EN düğmesi kullanıcının referansına (m07-site) göre yeniden tasarlandı; aynı PR'da ayrı commit
+  - Test için GitHub Pages gibi davranan yerel sunucu kullanıldı (olmayan adreste 404.html + 404 kodu)
+- **Son Commit:** 326f6d6 Merge pull request #4 from mehburmc/feature/i18n
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Faz 6: SEO, performans ve erişilebilirlik
+  (Open Graph etiketleri, sitemap, robots, Lighthouse)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - 404 espri mesajları `i18n.js` içinde (`nf.j1`–`nf.j7`, hem tr hem en); sayı değişirse
+    `404.js` içindeki `JOKE_COUNT` da güncellenmeli
+  - m07-site'daki "MehburMC Launcher-Site" kartı `feature/mmc-site-card` branch'inde
+    (geçici worktree) yüklenmeyi bekliyor
+
+### [2026-11-15 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 4 (TR/EN dil desteği) `feature/i18n` branch'i ve PR ile `main`'e alındı
   - Türkçe metinler HTML'de, İngilizceleri `assets/js/i18n.js` içinde (112 anahtar, hepsi çevrildi);
     menüde TR / EN düğmesi, seçim hatırlanıyor

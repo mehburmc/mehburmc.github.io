@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="nf.metaTitle">404: Bu chunk yüklenemedi | MehburMC Launcher</title>
+    <!-- Hata sayfası arama motorlarında listelenmesin -->
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#05070a" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- GitHub Pages bu sayfayı her adreste (ör. /a/b/c) gösterebilir: yollar kökten başlar -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/assets/icons/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/fonts/rajdhani-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <script src="/assets/js/i18n.js" defer></script>
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/404.js" defer></script>
+  </head>
+
+  <body class="nf-page">
+    <!-- Void'e düşen piksel bloklar (404.js doldurur) -->
+    <div class="void" aria-hidden="true"></div>
+
+    <a class="skip-link" href="#main" data-i18n="skip">İçeriğe geç</a>
+
+    <header class="site-header is-scrolled">
+      <nav class="nav container" aria-label="Ana menü" data-i18n-attr="aria-label:nav.label">
+        <a class="brand" href="/" aria-label="MehburMC Launcher ana sayfa" data-i18n-attr="aria-label:nav.home">
+          <img src="/assets/img/icon-128.webp" alt="" width="38" height="38" />
+          <span class="brand-name">Mehbur<span>MC</span></span>
+        </a>
+        <div class="lang-switch" role="group" aria-label="Dil seçimi" data-i18n-attr="aria-label:lang.label">
+          <button type="button" data-set-lang="tr" lang="tr" title="Türkçe" aria-pressed="true">TR</button>
+          <button type="button" data-set-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="nf">
+      <div class="container nf-inner">
+        <h1 class="sr-only">404</h1>
+        <!-- Bloklardan çizilen "404" (404.js oluşturur; JavaScript yoksa düz yazı görünür) -->
+        <div class="pixel-404" aria-hidden="true"></div>
+
+        <h2 class="nf-title" data-i18n="nf.heading">Bu chunk yüklenemedi!</h2>
+        <p class="nf-text" data-i18n="nf.text">
+          Aradığın sayfa void'e düşmüş olabilir. Ya da bu dünyada hiç oluşturulmadı.
+        </p>
+
+        <!-- Oyun içi sohbet satırı gibi görünen bilgi kutusu -->
+        <div class="chat-log" role="status">
+          <p>
+            <span class="chat-tag" data-i18n="nf.server">[Sunucu]</span>
+            <span data-nf-joke>Sayfa lavlara düştü. Envanter de gitti.</span>
+          </p>
+          <p>
+            <span class="chat-tag" data-i18n="nf.server">[Sunucu]</span>
+            <span data-i18n="nf.looked">Aranan konum:</span>
+            <code data-nf-path>/</code>
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="/">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7" /><path d="M3 3v6h6" /></svg>
+            <span lang="en">Respawn</span>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" /></svg>
+            <span data-i18n="hero.download">MehburMC Launcher'ı İndir</span>
+          </a>
+        </div>
+        <p class="nf-hint" data-i18n="nf.hint">Respawn seni ana sayfaya, yani spawn noktasına götürür.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        <p>© <span data-year>2026</span> MehburMC. <span data-i18n="footer.copy">Launcher GPL-3.0 lisansı ile açık kaynaklıdır.</span></p>
+        <p class="footer-legal" data-i18n="footer.legal">
+          Minecraft, Mojang AB'nin ticari markasıdır. MehburMC Launcher; Mojang veya Microsoft ile
+          bağlantılı değildir.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

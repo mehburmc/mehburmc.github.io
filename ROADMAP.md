@@ -68,10 +68,15 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Dil düğmesi menüye sığsın diye hamburger menü sınırı 880 px → 1040 px
 - Test: EN'de Türkçe satır kalmadı, TR → EN → TR birebir aynı, tarayıcı dili ve `?lang` çalışıyor
 
-## Faz 5: 404 sayfası (`feature/404`)
-- Minecraft havası: "Bu chunk yüklenemedi!", piksel yazı tipi, düşen piksel bloklar
-- Her açılışta rastgele espri mesajı, **Respawn** butonu (ana sayfaya döner)
+## Faz 5: 404 sayfası (`feature/404`) ✅
+- Minecraft havası: "Bu chunk yüklenemedi!"; "404" yazısı cyan bloklardan çizilir ve bloklar
+  açılışta yukarıdan düşüp yerine oturur (JavaScript yoksa düz yazı)
+- Arka planda void'e düşen, dönen bloklar ("animasyonları azalt" açıksa gösterilmez)
+- Oyun içi sohbet satırı: 7 espriden rastgele biri + aranan adres
+- **Respawn** butonu (ana sayfaya döner) ve launcher indirme butonu; TR/EN desteği
+- Yollar kökten başlar (`/assets/...`): GitHub Pages sayfayı `/a/b/c` gibi adreslerde de gösterir
 - Görseller tamamen özgün çizim, Mojang'a ait görsel (creeper vb.) kullanılmaz
+- Ayrıca: TR/EN düğmesi m07-site'taki düğmenin yapısına göre yeniden tasarlandı
 
 ## Faz 6: SEO, performans ve erişilebilirlik (`chore/seo-perf`)
 - Başlık/açıklama, Open Graph etiketleri, sitemap, robots
