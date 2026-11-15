@@ -20,3 +20,6 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
 - Minecraft havasında bir 404 sayfası eklendi: bloklardan "404", void'e düşen bloklar, rastgele
   espri mesajı ve ana sayfaya döndüren Respawn butonu.
 - TR/EN dil düğmesinin görünümü sadeleştirildi (köşeli kutu, eş genişlikli yazı).
+- Site linki paylaşılınca logolu önizleme kartı çıkıyor; arama motorları için site haritası ve
+  uygulama bilgileri eklendi.
+- Sayfa telefonda daha hızlı açılıyor: logo ve yazı tipi dosyaları küçültüldü (Lighthouse 85 → 96).

@@ -78,10 +78,17 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
 - Görseller tamamen özgün çizim, Mojang'a ait görsel (creeper vb.) kullanılmaz
 - Ayrıca: TR/EN düğmesi m07-site'taki düğmenin yapısına göre yeniden tasarlandı
 
-## Faz 6: SEO, performans ve erişilebilirlik (`chore/seo-perf`)
-- Başlık/açıklama, Open Graph etiketleri, sitemap, robots
-- Tembel yükleme (lazy loading), Lighthouse kontrolü
-- Klavyeyle gezinme, "az hareket" tercihinde animasyonların kısılması
+## Faz 6: SEO, performans ve erişilebilirlik (`chore/seo-perf`) ✅
+- Open Graph + Twitter kartı (paylaşım önizlemesi), canonical adres, yapılandırılmış veri
+  (SoftwareApplication), `sitemap.xml`, `robots.txt`, `site.webmanifest`
+- Dil alternatifi (hreflang) eklenmedi: iki dil aynı adreste JavaScript ile değişiyor
+- Logo için doğru `sizes` + 720/960 px ara boylar (telefon 219 KB yerine 95 KB indiriyor)
+- Girişteki ekran görüntüsü tembel yükleniyor (lazy loading)
+- Inter'in Türkçe harf dosyası Latin Genişletilmiş-A'ya küçültüldü: 85 KB → 14 KB
+- 404 sayfasına açıklama eklendi (SEO puanı `noindex` yüzünden bilerek düşük kalır)
+- Lighthouse (telefon): performans 85 → 96, LCP 4,0 → 2,6 sn, toplam 592 → 406 KB;
+  erişilebilirlik, en iyi uygulamalar ve SEO 100. Masaüstü: hepsi 100
+- Klavye ve "az hareket" desteği önceki fazlarda eklenmişti; Lighthouse erişilebilirlik 100
 
 ## Faz 7: Yayın kontrolü
 - Canlı sitede tüm butonlar ve indirme linkleri denenir

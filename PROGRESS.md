@@ -2,6 +2,26 @@
 
 ### [2026-11-15 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - Faz 6 (SEO, performans, erişilebilirlik) `chore/seo-perf` branch'i ve PR ile `main`'e alındı
+  - Open Graph/Twitter kartı, canonical, yapılandırılmış veri, sitemap, robots, webmanifest;
+    hreflang bilerek eklenmedi (iki dil aynı adreste JavaScript ile değişiyor)
+  - Logo için doğru `sizes` + 720/960 ara boylar; giriş ekran görüntüsü lazy; Inter latin-ext
+    U+0100–017F'ye küçültüldü (85 → 14 KB, fontTools ile geçici venv'de)
+  - Lighthouse telefon: performans 85 → 96, LCP 4,0 → 2,6 sn; diğer kategoriler ve masaüstü 100
+- **Son Commit:** 94f23c9 Merge pull request #5 from mehburmc/feature/404
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Faz 7: canlı sitede tüm buton/indirme kontrolü, `v1.0.0`
+  tag'i + CHANGELOG sürüm başlığı
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - `scripts/build-assets.py` Inter küçültmesini içermez; launcher'dan font yeniden kopyalanırsa
+    `pyftsubset ... --unicodes="U+0100-017F" --layout-features='*' --flavor=woff2` tekrar uygulanmalı
+  - Önbellek süresini GitHub Pages belirliyor (10 dk); Lighthouse uyarısı düzeltilemez
+  - `sitemap.xml` içindeki `lastmod` elle güncelleniyor
+  - m07-site'daki "MehburMC Launcher-Site" kartı `feature/mmc-site-card` branch'inde, bu
+    oturumun geçici klasöründeki worktree'de; oturum kapanırsa kaybolabilir
+
+### [2026-11-15 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 5 (404 sayfası) `feature/404` branch'i ve PR ile `main`'e alındı: bloklardan "404",
     void'e düşen bloklar, 7 espriden rastgele biri, aranan adres, Respawn butonu, TR/EN
   - 404 sayfasındaki yollar kökten başlıyor (`/assets/...`); GitHub Pages sayfayı her adreste gösterir
