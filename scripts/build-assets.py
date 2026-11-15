@@ -49,7 +49,8 @@ faint = alpha < 4
 alpha[faint] = 0
 color[faint] = 0
 badge = Image.fromarray(np.dstack([color, alpha]).astype(np.uint8), "RGBA")
-for width in (1200, 640):
+# Ara boylar: tarayıcı ekran yoğunluğuna göre en yakın boyu seçer (telefon ~720, masaüstü 640/1200)
+for width in (1200, 960, 720, 640):
     out = badge.resize((width, round(h * width / w)), Image.LANCZOS)
     out.save(img_dir / f"logo-{width}.webp", "WEBP", quality=80, method=6)
 

@@ -200,6 +200,7 @@
 
       // 404 sayfası
       "nf.metaTitle": "404: This chunk failed to load | MehburMC Launcher",
+      "nf.metaDesc": "The page you're looking for wasn't found. Press Respawn to return to the MehburMC Launcher home page.",
       "nf.heading": "This chunk failed to load!",
       "nf.text": "The page you're looking for may have fallen into the void. Or it was never generated in this world.",
       "nf.server": "[Server]",
