@@ -24,10 +24,12 @@ Düz HTML, CSS ve JavaScript; kurulum veya build adımı yoktur. GitHub Pages ü
 
 ```
 index.html          ana sayfa
+404.html            "sayfa bulunamadı" sayfası (GitHub Pages otomatik kullanır)
 assets/
   css/style.css     tüm stiller (renk değişkenleri en üstte)
   js/i18n.js        dil sistemi ve İngilizce çeviriler
   js/main.js        menü, galeri ve indirme penceresi
+  js/404.js         404 sayfasındaki bloklar ve espri mesajı
   fonts/            gömülü yazı tipleri + lisansları (SIL OFL)
   img/              logo, menü ikonu, sosyal medya önizleme görseli
   img/screenshots/  launcher ekran görüntüleri (tam boy + küçük önizleme)
