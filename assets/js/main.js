@@ -124,7 +124,7 @@
     });
   }
 
-  // --- İndirme penceresi (.exe / .deb seçimi) ----------------------------------
+  // --- İndirme penceresi (.exe / .deb / .apk seçimi) ----------------------------------
   // Sürüm bilgisi GitHub API'den canlı çekilir. API'ye ulaşılamazsa butonlar GitHub'daki
   // sürümler sayfasına gider. JavaScript yoksa İndir butonları zaten oraya gider.
   const dlDialog = document.getElementById("download-dialog");
@@ -132,11 +132,11 @@
   if (dlDialog && typeof dlDialog.showModal === "function") {
     const REPO = "Mehbur07/MehburMC-Launcher";
     const API_URL = `https://api.github.com/repos/${REPO}/releases?per_page=20`;
-    const CACHE_KEY = "mmc-releases-v1";
+    const CACHE_KEY = "mmc-releases-v2"; // v2: .apk eklendi, eski önbellekte yok
     const CACHE_MS = 10 * 60 * 1000; // 10 dakika: GitHub'ın saatlik 60 istek sınırını korur
 
     // Ekrandaki yazılar i18n.js'teki "dl.*" anahtarlarından gelir
-    const PATTERNS = { windows: /_x64-setup\.exe$/i, linux: /_amd64\.deb$/i };
+    const PATTERNS = { windows: /_x64-setup\.exe$/i, linux: /_amd64\.deb$/i, android: /-arm64\.apk$/i };
 
     const statusEl = dlDialog.querySelector("[data-dl-status]");
     const noteEl = dlDialog.querySelector("[data-dl-platform-note]");
@@ -145,17 +145,20 @@
     const options = {
       windows: dlDialog.querySelector('[data-os="windows"]'),
       linux: dlDialog.querySelector('[data-os="linux"]'),
+      android: dlDialog.querySelector('[data-os="android"]'),
     };
     let loadPromise = null;
     let opener = null;
     let state = "idle"; // idle | loading | ok | error (dil değişince yazıyı yenilemek için)
     let lastData = null;
 
-    // Ziyaretçinin sistemi: telefon kontrolü önce (Android'in tanıtım yazısında da "Linux" geçer)
+    // Ziyaretçinin sistemi: telefon kontrolü önce (Android'in tanıtım yazısında da "Linux" geçer).
+    // Android'e .apk önerilir; iPhone/iPad için sürüm yok ("mobile" notu gösterilir).
     function detectPlatform() {
       const ua = navigator.userAgent || "";
       const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
-      if (/Android|iPhone|iPad|iPod/i.test(ua) || (/Mac/i.test(platform) && navigator.maxTouchPoints > 1)) return "mobile";
+      if (/Android/i.test(ua)) return "android";
+      if (/iPhone|iPad|iPod/i.test(ua) || (/Mac/i.test(platform) && navigator.maxTouchPoints > 1)) return "mobile";
       if (/Win/i.test(platform) || /Windows/i.test(ua)) return "windows";
       if (/Mac/i.test(platform) || /Mac OS X/i.test(ua)) return "mac";
       if (/Linux|X11|CrOS/i.test(platform + " " + ua)) return "linux";
@@ -205,7 +208,7 @@
         for (const release of sorted) {
           const asset = (release.assets || []).find((a) => pattern.test(a.name));
           if (asset) {
-            const version = (asset.name.match(/_(\d+\.\d+\.\d+)_/) || [])[1] || release.tag_name;
+            const version = (asset.name.match(/[_-](\d+\.\d+\.\d+)[_-]/) || [])[1] || release.tag_name;
             result[os] = {
               name: asset.name,
               size: asset.size,
@@ -232,7 +235,7 @@
         });
         if (!res.ok) throw new Error(`GitHub API ${res.status}`);
         const data = pickAssets(await res.json());
-        if (!data.windows && !data.linux) throw new Error("Uygun dosya bulunamadı");
+        if (!data.windows && !data.linux && !data.android) throw new Error("Uygun dosya bulunamadı");
         writeCache(data);
         return data;
       } finally {
@@ -261,7 +264,7 @@
         cmdEl.removeAttribute("data-i18n");
         cmdEl.textContent = `sudo apt install ./${data.linux.name}`;
       }
-      const main = data.windows || data.linux;
+      const main = data.windows || data.linux || data.android;
       statusEl.textContent = t("dl.latest", { version: main.version, date: formatDate(main.date) });
     }
 

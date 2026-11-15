@@ -92,6 +92,7 @@
       <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="7" rx="2" /><rect x="3" y="13.5" width="18" height="7" rx="2" /><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6" /></symbol>
       <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.5 13.9 9 19.5 11l-5.6 2L12 18.5 10.1 13 4.5 11l5.6-2L12 3.5Z" /><path d="M19 3v3M17.5 4.5h3M5 18v3M3.5 19.5h3" /></symbol>
       <symbol id="i-windows" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2" /><path d="M8 21h8M12 17v4" /></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5" /><path d="M10.5 18.5h3" /></symbol>
       <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2" /><path d="m6.5 9 3 3-3 3M12 15h5" /></symbol>
       <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" /></symbol>
       <symbol id="i-zip" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8l-5-5Z" /><path d="M14 3v5h5M10 3v2m0 2v2m0 2v2" /><rect x="8.5" y="13" width="3" height="4" rx="1" /></symbol>
@@ -138,7 +139,7 @@
             <button type="button" data-set-lang="tr" lang="tr" title="Türkçe" aria-pressed="true">TR</button>
             <button type="button" data-set-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
           </div>
-          <!-- data-download: .exe / .deb seçim penceresini açar (JavaScript yoksa GitHub'a gider) -->
+          <!-- data-download: .exe / .deb / .apk seçim penceresini açar (JavaScript yoksa GitHub'a gider) -->
           <a class="btn btn-primary" href="https://github.com/Mehbur07/MehburMC-Launcher/releases/latest" data-download>
             <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
             <span data-i18n="nav.download">İndir</span>
@@ -379,6 +380,26 @@
                 <button class="copy-btn" type="button" data-copy data-i18n="dl.copy">Kopyala</button>
               </div>
             </div>
+          </article>
+
+          <article class="dl-option" data-os="android">
+            <span class="dl-badge" hidden data-i18n="dl.yours">Senin sistemin</span>
+            <div class="req-head">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone" /></svg></span>
+              <div>
+                <h3 lang="en">Android</h3>
+                <p class="dl-meta" data-i18n="dl.androidMeta">Android 7.0+ · arm64 · <code>.apk</code> · deneme</p>
+              </div>
+            </div>
+            <p class="dl-file">
+              <code data-dl-name>…-arm64.apk</code>
+              <span data-dl-size></span>
+            </p>
+            <a class="btn btn-ghost dl-btn" href="https://github.com/Mehbur07/MehburMC-Launcher/releases" data-dl-link>
+              <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
+              <span data-i18n="dl.androidBtn"><span lang="en">Android</span> için İndir <span lang="en">(.apk)</span></span>
+            </a>
+            <p class="dl-hint" data-i18n="dl.androidHint">Minecraft Java Edition telefonda çalışır. APK'yı telefonda açıp kur; "bilinmeyen kaynaklar" izni istenirse ver.</p>
           </article>
         </div>
 
