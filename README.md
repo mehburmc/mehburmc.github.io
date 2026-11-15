@@ -6,9 +6,10 @@ launcher'ıdır.
 
 **Canlı site:** https://mehburmc.github.io
 
-> **Durum:** yapım aşamasında. Fazlar ve ilerleme için [ROADMAP.md](ROADMAP.md) dosyasına bak.
+> **Durum:** v1.0.0 yayında. Değişiklikler için [CHANGELOG.md](CHANGELOG.md), fazlar için
+> [ROADMAP.md](ROADMAP.md) dosyasına bak.
 
-## Sitede neler olacak
+## Sitede neler var
 
 - **İndir** butonu: Windows (`.exe`) veya Linux (`.deb`) seçimi, her zaman en son sürüm
 - Ekran görüntüleri, özellikler, hakkında ve SSS bölümleri
@@ -41,6 +42,7 @@ assets/
 kaynak-gorseller/   görsellerin işlenmemiş orijinalleri
 scripts/            yardımcı araçlar (görsel üretimi)
 favicon.ico         tarayıcı sekmesi ikonu
+LICENSE             sitenin kod lisansı (GPL-3.0)
 ```
 
 ## Bilgisayarda açmak
@@ -72,4 +74,14 @@ python scripts/build-assets.py kaynak-gorseller/logo-original.jpg ../mehbur-laun
 
 ## Lisans
 
-Launcher GPL-3.0 lisanslıdır. Site lisansı yayın öncesinde belirlenecek.
+Sitenin kodu (HTML, CSS, JavaScript ve `scripts/` içindeki araçlar), launcher gibi
+[GPL-3.0](LICENSE) lisanslıdır.
+
+Şunlar bu lisansa **dahil değildir**:
+
+- **MehburMC adı, logo ve ikonlar** (`assets/img/`, `assets/icons/`, `favicon.ico`,
+  `kaynak-gorseller/`) ve **ekran görüntüleri**: tüm hakları saklıdır, izinsiz kullanılamaz.
+- **Yazı tipleri** (`assets/fonts/`): kendi lisanslarına (SIL Open Font License) tabidir;
+  lisans dosyaları aynı klasördedir.
+
+Minecraft, Mojang AB'nin ticari markasıdır. Bu site Mojang veya Microsoft ile bağlantılı değildir.

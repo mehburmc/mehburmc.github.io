@@ -90,10 +90,19 @@ Her faz ayrı bir branch'te yapılır ve Pull Request ile `main`'e girer.
   erişilebilirlik, en iyi uygulamalar ve SEO 100. Masaüstü: hepsi 100
 - Klavye ve "az hareket" desteği önceki fazlarda eklenmişti; Lighthouse erişilebilirlik 100
 
-## Faz 7: Yayın kontrolü
-- Canlı sitede tüm butonlar ve indirme linkleri denenir
-- `v1.0.0` tag'i + CHANGELOG
-- (İsteğe bağlı) Launcher README'sine site linki, ayrı PR ile
+## Faz 7: Yayın kontrolü (`chore/release-v1.0.0`)
+- Canlı sitede gerçek tarayıcıyla 50 kontrol yapıldı, hepsi geçti: 4 İndir butonunun hepsi
+  pencereyi açıyor; Windows / Linux / macOS / Android'de doğru seçenek veya bilgi notu çıkıyor;
+  pencere X, Esc ve dışarı tıklamayla kapanıyor; Kopyala, menü bağlantıları, hamburger menü,
+  lightbox, SSS, TR/EN (hatırlama ve `?lang=en`), 404 sayfası ve Respawn çalışıyor; konsol
+  hatası ve yüklenemeyen dosya yok
+- İndirme dosyaları tamamen indirildi: `.exe` (5,6 MB), `.deb` (7,9 MB) ve kaynak kod `.zip`
+  sağlam, boyutlar GitHub'daki bilgilerle aynı
+- Sitedeki 9 GitHub bağlantısı, 28 site dosyası, paylaşım görseli, `sitemap.xml`, `robots.txt`
+  ve `site.webmanifest` yanıt veriyor
+- Sitenin kodu GPL-3.0 (`LICENSE`); logo, ekran görüntüleri ve yazı tipleri lisansa dahil değil
+- CHANGELOG `1.0.0` başlığına taşındı; `v1.0.0` tag'i PR merge edildikten sonra atılacak
+- Launcher README'sine site linki: launcher reposunda ayrı PR
 
 ## İleride (plan dışı)
 - Portable zip seçeneği, sürüm notları sayfası, indirme sayacı, Discord linki, özel alan adı
