@@ -10,6 +10,9 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
   (GitHub'daki en yeni `-arm64.apk` dosyası). Android telefondan girenlere .apk önerilir; iPhone/iPad
   notu ve macOS notu buna göre güncellendi. Pencere üç seçeneğe göre genişletildi.
 - Girişteki platform etiketine Android eklendi: "Windows · Linux · Android".
+- İndirme penceresine macOS seçeneği eklendi (`.dmg`, Apple Silicon ve Intel). Kart yalnız GitHub'da
+  bir `-macos` sürümünde `.dmg` varken görünür ve Mac'ten girenlere önerilir; ilk açılıştaki macOS
+  uyarısının nasıl geçileceğini anlatır. Mac sürümü henüz yoksa Mac'ten girenler "hazırlanıyor" notu görür.
 
 ## [1.0.0] - 2026-11-16
 

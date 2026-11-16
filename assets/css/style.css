@@ -1046,6 +1046,10 @@ code {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
+/* Henüz dosyası olmayan seçenek (macOS) gizli kalır; display:flex [hidden]'ı ezmesin */
+.dl-option[hidden] {
+  display: none;
+}
 /* Ziyaretçinin sistemine uyan seçenek öne çıkar */
 .dl-option.is-recommended {
   order: -1;

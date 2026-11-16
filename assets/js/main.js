@@ -132,11 +132,16 @@
   if (dlDialog && typeof dlDialog.showModal === "function") {
     const REPO = "Mehbur07/MehburMC-Launcher";
     const API_URL = `https://api.github.com/repos/${REPO}/releases?per_page=20`;
-    const CACHE_KEY = "mmc-releases-v2"; // v2: .apk eklendi, eski önbellekte yok
+    const CACHE_KEY = "mmc-releases-v3"; // v3: macOS .dmg eklendi, eski önbellekte yok
     const CACHE_MS = 10 * 60 * 1000; // 10 dakika: GitHub'ın saatlik 60 istek sınırını korur
 
     // Ekrandaki yazılar i18n.js'teki "dl.*" anahtarlarından gelir
-    const PATTERNS = { windows: /_x64-setup\.exe$/i, linux: /_amd64\.deb$/i, android: /-arm64\.apk$/i };
+    const PATTERNS = {
+      windows: /_x64-setup\.exe$/i,
+      linux: /_amd64\.deb$/i,
+      android: /-arm64\.apk$/i,
+      mac: /_universal\.dmg$/i,
+    };
 
     const statusEl = dlDialog.querySelector("[data-dl-status]");
     const noteEl = dlDialog.querySelector("[data-dl-platform-note]");
@@ -146,6 +151,7 @@
       windows: dlDialog.querySelector('[data-os="windows"]'),
       linux: dlDialog.querySelector('[data-os="linux"]'),
       android: dlDialog.querySelector('[data-os="android"]'),
+      mac: dlDialog.querySelector('[data-os="mac"]'),
     };
     let loadPromise = null;
     let opener = null;
@@ -175,7 +181,9 @@
         btn.classList.toggle("btn-primary", match);
         btn.classList.toggle("btn-ghost", !match);
       });
-      const note = platform === "mobile" ? t("dl.mobile") : platform === "mac" ? t("dl.mac") : "";
+      // Mac sürümü yayınlanmışsa kartı öne çıkar; yoksa "henüz yok" notu gösterilir
+      const macReady = Boolean(lastData && lastData.mac);
+      const note = platform === "mobile" ? t("dl.mobile") : platform === "mac" && !macReady ? t("dl.mac") : "";
       noteEl.hidden = !note;
       noteEl.querySelector("span").textContent = note;
     }
@@ -254,6 +262,8 @@
     function render(data) {
       Object.entries(options).forEach(([os, card]) => {
         const asset = data[os];
+        // macOS kartı yalnız gerçek bir .dmg varken görünür (diğerleri hep görünür)
+        if (os === "mac") card.hidden = !asset;
         if (!asset) return; // bulunamayan sistemin butonu GitHub sayfasına gitmeye devam eder
         card.querySelector("[data-dl-name]").textContent = asset.name;
         card.querySelector("[data-dl-size]").textContent = `v${asset.version} · ${formatSize(asset.size)}`;
@@ -281,6 +291,7 @@
             state = "ok";
             lastData = data;
             render(data);
+            applyPlatform(); // Mac sürümü bulunduysa "henüz yok" notu kalkar
           })
           .catch(() => {
             state = "error";

@@ -30,7 +30,7 @@
       "dl.error": "Sürüm bilgisi şu an alınamadı. Butonlar seni GitHub'daki sürümler sayfasına götürecek.",
       "dl.mobile":
         "MehburMC Launcher'ın iPhone ve iPad sürümü yok. Android telefonlar için .apk, bilgisayarlar için .exe ve .deb sürümleri var.",
-      "dl.mac": "macOS şu an desteklenmiyor. Launcher Windows, Linux ve Android'de çalışır.",
+      "dl.mac": "macOS sürümü hazırlanıyor. Şimdilik launcher Windows, Linux ve Android'de çalışır.",
       "dl.copy": "Kopyala",
       "dl.copied": "Kopyalandı!",
       // 404 sayfasının rastgele espri mesajları (404.js her açılışta birini seçer)
@@ -124,6 +124,9 @@
       "dl.androidMeta": "Android 7.0+ · arm64 · <code>.apk</code> · beta",
       "dl.androidBtn": "Download for Android (.apk)",
       "dl.androidHint": "Minecraft Java Edition runs on the phone. Open the APK on your phone to install it; allow \"unknown sources\" if asked.",
+      "dl.macMeta": "macOS 11+ · Apple Silicon and Intel · <code>.dmg</code> · preview",
+      "dl.macBtn": "Download for macOS (.dmg)",
+      "dl.macHint": "Drag the app into the Applications folder. If macOS warns on first launch: System Settings → Privacy & Security → <strong>Open Anyway</strong> (macOS 14 and earlier: Control-click → Open).",
       "dl.cmdHint": "To install, open a terminal in the folder with the file and run:",
       "dl.cmdPlaceholder": "sudo apt install ./MehburMC-Launcher_&lt;version&gt;_amd64.deb",
       "dl.allReleases": "All versions and release notes",
@@ -133,7 +136,7 @@
       "dl.error": "Couldn't fetch version info right now. The buttons will take you to the releases page on GitHub.",
       "dl.mobile":
         "There is no iPhone or iPad version of MehburMC Launcher. There is an .apk for Android phones, and .exe and .deb versions for computers.",
-      "dl.mac": "macOS isn't supported yet. The launcher runs on Windows, Linux and Android.",
+      "dl.mac": "The macOS version is on its way. For now the launcher runs on Windows, Linux and Android.",
       "dl.copy": "Copy",
       "dl.copied": "Copied!",
 
