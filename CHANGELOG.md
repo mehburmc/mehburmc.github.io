@@ -9,6 +9,7 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
 - İndirme penceresine Android seçeneği eklendi: .exe ve .deb'in yanında artık .apk de indirilebiliyor
   (GitHub'daki en yeni `-arm64.apk` dosyası). Android telefondan girenlere .apk önerilir; iPhone/iPad
   notu ve macOS notu buna göre güncellendi. Pencere üç seçeneğe göre genişletildi.
+- Girişteki platform etiketine Android eklendi: "Windows · Linux · Android".
 
 ## [1.0.0] - 2026-11-16
 

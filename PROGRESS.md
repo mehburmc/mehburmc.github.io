@@ -2,6 +2,20 @@
 
 ### [2026-11-16 - Mehbur07]
 - **Yapılanlar & Kararlar:**
+  - `feature/android-chip`: girişteki platform etiketi "Windows · Linux" → "Windows · Linux · Android"
+    (launcher'ın `v0.32.0-android` deneme sürümü yayında; indirme penceresindeki Android seçeneği PR #9 ile gelmişti)
+  - Etiket 1440 px ve 320 px genişlikte tek satırda kalıyor, yatay taşma yok
+- **Son Commit:** 92d926e Merge pull request #9 from mehburmc/feature/android-download
+- **Aktif Branch:** main
+- **Sıradaki İlk İş (Next Action):** Kullanıcı isterse kalan "Windows ve Linux" yazılarına Android
+  eklemek: meta açıklama, paylaşım kartı, alt bilgi, teknik bilgilerdeki "Platform" satırı,
+  `site.webmanifest`, README (TR + EN)
+- **Bilinen Sorunlar / Dikkat Edilmesi Gerekenler:**
+  - Launcher README PR'ı (Mehbur07/MehburMC-Launcher#4) CI'dan geçti, kullanıcının merge'ünü bekliyor
+  - `sitemap.xml` içindeki `lastmod` elle güncelleniyor
+
+### [2026-11-16 - Mehbur07]
+- **Yapılanlar & Kararlar:**
   - Faz 7 (yayın kontrolü) `chore/release-v1.0.0` branch'i ve PR ile `main`'e alındı
   - Canlı sitede gerçek tarayıcıyla (playwright-core + Chrome, geçici klasörde) 50 kontrol yapıldı,
     hepsi geçti; `.exe`, `.deb` ve kaynak kod `.zip` tamamen indirilip doğrulandı
