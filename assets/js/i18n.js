@@ -181,6 +181,12 @@
       "faq.a6":
         'First check the <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/blob/main/docs/SORUN_GIDERME.md" rel="noopener">troubleshooting guide</a> (Turkish). If that doesn\'t help, <a class="text-link" href="https://github.com/Mehbur07/MehburMC-Launcher/issues" rel="noopener">open an issue on GitHub</a>.',
 
+      // MehburMC Kütüphane sitesi
+      "library.title": "MehburMC Library",
+      "library.p":
+        "The mods, modpacks, resource packs and shaders the community shares, now on the web too. Search, filter and download without signing in; upload your own with your account.",
+      "library.go": "Go to the Library",
+
       // Kaynak kod
       "source.title": "Source Code",
       "source.p":
