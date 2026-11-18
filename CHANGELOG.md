@@ -13,6 +13,7 @@ sürümler [Semantic Versioning](https://semver.org/lang/tr/) kuralını izler.
 - İndirme penceresine macOS seçeneği eklendi (`.dmg`, Apple Silicon ve Intel). Kart yalnız GitHub'da
   bir `-macos` sürümünde `.dmg` varken görünür ve Mac'ten girenlere önerilir; ilk açılıştaki macOS
   uyarısının nasıl geçileceğini anlatır. Mac sürümü henüz yoksa Mac'ten girenler "hazırlanıyor" notu görür.
+- Özelliklerin altına MehburMC Kütüphane sitesine (mehburmclibrary.github.io) giden bir kart eklendi.
 
 ## [1.0.0] - 2026-11-16
 
